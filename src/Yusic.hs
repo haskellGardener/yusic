@@ -338,7 +338,7 @@ toCanonicalSignature sp | sp `sEQ` [C,E,G                     ] = Just CMajor   
                         | otherwise                             = Nothing                -- Broken [SigPitch] deserves Nothing !!!
 
   where
-    sEQ (Eq, Ord) => a :: [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
+    sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
     sEQ a b = sort a == sort b
 
 
