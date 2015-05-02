@@ -10,20 +10,25 @@ yusic :: T.Text
 yusic = "Well Hello Dolly"
 
 
---Super All Notes = [A0,As0_Bb0,C1,Cs1_Db1,D1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1,C2,Cs2_Db2,D2,Ds2_Eb2,E2,F2,Fs2_Gb2,G,Gs2_Ab2,A2,As2_Bb2,B2,C3,Cs3_Db3,D3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3,C4,Cs4_Db4,D4,Ds4_Eb4,E4,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4,C5,Cs5_Db5,D5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5,C6,Cs6_Db6,D6,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6,C7,Cs7_Db7,D7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7,C8]
---Super Midi Notes = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108]
+--Super All Note = [A0,As0_Bb0,C1,Cs1_Db1,D1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1,C2,Cs2_Db2,D2,Ds2_Eb2,E2,F2,Fs2_Gb2,G,Gs2_Ab2,A2,As2_Bb2,B2,C3,Cs3_Db3,D3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3,C4,Cs4_Db4,D4,Ds4_Eb4,E4,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4,C5,Cs5_Db5,D5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5,C6,Cs6_Db6,D6,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6,C7,Cs7_Db7,D7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7,C8]
+--Super Midi Note = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108]
 
 listNum :: [] Int
 listNum = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108]
 
-listNotes :: [] Notes
-listNotes = [A0,As0_Bb0,B0,C1,Cs1_Db1,D1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1,C2,Cs2_Db2,D2,Ds2_Eb2,E2,F2,Fs2_Gb2,G2,Gs2_Ab2,A2,As2_Bb2,B2,C3,Cs3_Db3,D3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3,C4,Cs4_Db4,D4,Ds4_Eb4,E4,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4,C5,Cs5_Db5,D5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5,C6,Cs6_Db6,D6,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6,C7,Cs7_Db7,D7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7,C8]
+listNotes :: [] Note
+listNotes = [A0,As0_Bb0,B0,C1,Cs1_Db1,D1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1,C2,Cs2_Db2,D2,Ds2_Eb2,E2,F2,Fs2_Gb2
+            ,G2,Gs2_Ab2,A2,As2_Bb2,B2,C3,Cs3_Db3,D3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3,C4,Cs4_Db4,D4,Ds4_Eb4,E4
+            ,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4,C5,Cs5_Db5,D5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5,C6,Cs6_Db6,D6
+            ,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6,C7,Cs7_Db7,D7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7,C8]
 
 
-data Notes = A0
+data Note = A0
            | As0_Bb0
+           | B0
            | C1
            | Cs1_Db1
+           | D1
            | Ds1_Eb1
            | E1
            | F1
@@ -35,6 +40,7 @@ data Notes = A0
            | B1
            | C2
            | Cs2_Db2
+           | D2
            | Ds2_Eb2
            | E2
            | F2
@@ -46,6 +52,7 @@ data Notes = A0
            | B2
            | C3
            | Cs3_Db3
+           | D3
            | Ds3_Eb3
            | E3
            | F3
@@ -57,6 +64,7 @@ data Notes = A0
            | B3
            | C4
            | Cs4_Db4
+           | D4
            | Ds4_Eb4
            | E4
            | F4
@@ -68,6 +76,7 @@ data Notes = A0
            | B4
            | C5
            | Cs5_Db5
+           | D5
            | Ds5_Eb5
            | E5
            | F5
@@ -79,6 +88,7 @@ data Notes = A0
            | B5
            | C6
            | Cs6_Db6
+           | D6
            | Ds6_Eb6
            | E6
            | F6
@@ -90,6 +100,7 @@ data Notes = A0
            | B6
            | C7
            | Cs7_Db7
+           | D7
            | Ds7_Eb7
            | E7
            | F7
@@ -101,91 +112,6 @@ data Notes = A0
            | B7
            | C8
              deriving (Show, Eq, Ord, Enum)
-
-toOctave :: Notes -> Int
-toOctave A0      = 0
-toOctave As0_Bb0 = 0
-toOctave C1      = 1
-toOctave Cs1_Db1 = 1
-toOctave Ds1_Eb1 = 1
-toOctave E1      = 1
-toOctave F1      = 1
-toOctave Fs1_Gb1 = 1
-toOctave G1      = 1
-toOctave Gs1_Ab1 = 1
-toOctave A1      = 1
-toOctave As1_Bb1 = 1
-toOctave B1      = 1
-toOctave C2      = 2
-toOctave Cs2_Db2 = 2
-toOctave Ds2_Eb2 = 2
-toOctave E2      = 2
-toOctave F2      = 2
-toOctave Fs2_Gb2 = 2
-toOctave G2      = 2
-toOctave Gs2_Ab2 = 2
-toOctave A2      = 2
-toOctave As2_Bb2 = 2
-toOctave B2      = 2
-toOctave C3      = 3
-toOctave Cs3_Db3 = 3
-toOctave Ds3_Eb3 = 3
-toOctave E3      = 3
-toOctave F3      = 3
-toOctave Fs3_Gb3 = 3
-toOctave G3      = 3
-toOctave Gs3_Ab3 = 3
-toOctave A3      = 3
-toOctave As3_Bb3 = 3
-toOctave B3      = 3
-toOctave C4      = 4
-toOctave Cs4_Db4 = 4
-toOctave Ds4_Eb4 = 4
-toOctave E4      = 4
-toOctave F4      = 4
-toOctave Fs4_Gb4 = 4
-toOctave G4      = 4
-toOctave Gs4_Ab4 = 4
-toOctave A4      = 4
-toOctave As4_Bb4 = 4
-toOctave B4      = 4
-toOctave C5      = 5
-toOctave Cs5_Db5 = 5
-toOctave Ds5_Eb5 = 5
-toOctave E5      = 5
-toOctave F5      = 5
-toOctave Fs5_Gb5 = 5
-toOctave G5      = 5
-toOctave Gs5_Ab5 = 5
-toOctave A5      = 5
-toOctave As5_Bb5 = 5
-toOctave B5      = 5
-toOctave C6      = 6
-toOctave Cs6_Db6 = 6
-toOctave Ds6_Eb6 = 6
-toOctave E6      = 6
-toOctave F6      = 6
-toOctave Fs6_Gb6 = 6
-toOctave G6      = 6
-toOctave Gs6_Ab6 = 6
-toOctave A6      = 6
-toOctave As6_Bb6 = 6
-toOctave B6      = 6
-toOctave C7      = 7
-toOctave Cs7_Db7 = 7
-toOctave Ds7_Eb7 = 7
-toOctave E7      = 7
-toOctave F7      = 7
-toOctave Fs7_Gb7 = 7
-toOctave G7      = 7
-toOctave Gs7_Ab7 = 7
-toOctave A7      = 7
-toOctave As7_Bb7 = 7
-toOctave B7      = 7
-toOctave C8      = 8
-
-
-
 
 
 data SigPitch = C
@@ -217,7 +143,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_CMinor6
               | KG_C9                  -- End C
 
-              | KG_Cs_DbMajor               -- Begin Cs/Db
+              | KG_Cs_DbMajor          -- Begin Cs/Db
               | KG_Cs_DbMinor
               | KG_Cs_Db5
               | KG_Cs_DbDominant7
@@ -364,162 +290,161 @@ data KeyGuide = KG_CMajor              -- Begin C
 toKeyGuide :: [SigPitch] -> Maybe KeyGuide                                        -- Account for broken [SigPitch]
 toKeyGuide [] = Nothing
 toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor            -- sort/compare both deconstructor and positional parameter
-                        | sp `sEQ` [C,Ds_Eb,G                 ] = Just KG_CMinor
-                        | sp `sEQ` [C,G                       ] = Just KG_C5
-                        | sp `sEQ` [C,E,G,As_Bb               ] = Just KG_CDominant7
-                        | sp `sEQ` [C,E,G,B                   ] = Just KG_CMajor7
-                        | sp `sEQ` [C,Ds_Eb,G,As_Bb           ] = Just KG_CMinor7
-                        | sp `sEQ` [C,Ds_Eb,G,B               ] = Just KG_CMinorMajor7
-                        | sp `sEQ` [C,F,G                     ] = Just KG_CSus4
-                        | sp `sEQ` [C,D,G                     ] = Just KG_CSus2
-                        | sp `sEQ` [C,E,G,A                   ] = Just KG_C6
-                        | sp `sEQ` [C,Ds_Eb,G,A               ] = Just KG_CMinor6
-                        | sp `sEQ` [C,E,G,As_Bb               ] = Just KG_C9
-
-                        | sp `sEQ` [Cs_Db,F,Gs_Ab             ] = Just KG_Cs_DbMajor        -- Begin Cs_DbMajor
-                        | sp `sEQ` [Cs_Db,E,Gs_Ab             ] = Just KG_Cs_DbMinor
-                        | sp `sEQ` [Cs_Db,Gs_Ab               ] = Just KG_Cs_Db5
-                        | sp `sEQ` [Cs_Db,G,Gs_Ab,B           ] = Just KG_Cs_DbDominant7
-                        | sp `sEQ` [Cs_Db,F,Gs_Ab,C           ] = Just KG_Cs_DbMajor7
-                        | sp `sEQ` [Cs_Db,E,Gs_Ab,B           ] = Just KG_Cs_DbMinor7
-                        | sp `sEQ` [Cs_Db,E,Gs_Ab,C           ] = Just KG_Cs_DbMinorMajor7
-                        | sp `sEQ` [Cs_Db,Fs_Gb,Gs_Ab         ] = Just KG_Cs_DbSus4
-                        | sp `sEQ` [Cs_Db,Ds_Eb,Gs_Ab         ] = Just KG_Cs_DbSus2
-                        | sp `sEQ` [Cs_Db,F,Gs_Ab,As_Bb       ] = Just KG_Cs_Db6
-                        | sp `sEQ` [Cs_Db,E,Gs_Ab,As_Bb       ] = Just KG_Cs_DbMinor6
-                        | sp `sEQ` [Cs_Db,Ds_Eb,F,Gs_Ab,B     ] = Just KG_Cs_Db9            -- end Cs_Db
-
-                        | sp `sEQ` [D,Fs_Gb,A                 ] = Just KG_DMajor            -- Begin D
-                        | sp `sEQ` [D,F,A                     ] = Just KG_DMinor
-                        | sp `sEQ` [D,A                       ] = Just KG_D5
-                        | sp `sEQ` [D,Fs_Gb,A,C               ] = Just KG_DDominant7
-                        | sp `sEQ` [D,Fs_Gb,A,Cs_Db           ] = Just KG_DMajor7
-                        | sp `sEQ` [D,F,A,C                   ] = Just KG_DMinor7
-                        | sp `sEQ` [D,F,G,Cs_Db               ] = Just KG_DMinorMajor7
-                        | sp `sEQ` [D,G,A                     ] = Just KG_DSus4
-                        | sp `sEQ` [D,E,A                     ] = Just KG_DSus2
-                        | sp `sEQ` [D,Fs_Gb,A,B               ] = Just KG_D6
-                        | sp `sEQ` [D,F,A,B                   ] = Just KG_DMinor6
-                        | sp `sEQ` [D,E,Fs_Gb,A,C             ] = Just KG_D9                -- end DMajor
-
-                        | sp `sEQ` [Ds_Eb,G,As_Bb             ] = Just KG_Ds_EbMajor        -- Begin Ds_Eb
-                        | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb         ] = Just KG_Ds_EbMinor
-                        | sp `sEQ` [Ds_Eb,As_Bb               ] = Just KG_Ds_Eb5
-                        | sp `sEQ` [Ds_Eb,G,As_Bb,Cs_Db       ] = Just KG_Ds_EbDominant7
-                        | sp `sEQ` [Ds_Eb,G,As_Bb,D           ] = Just KG_Ds_EbMajor7
-                        | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb,Cs_Db   ] = Just KG_Ds_EbMinor7
-                        | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb,D       ] = Just KG_Ds_EbMinorMajor7
-                        | sp `sEQ` [Ds_Eb,Gs_Ab,As_Bb         ] = Just KG_Ds_EbSus4
-                        | sp `sEQ` [Ds_Eb,F,As_Bb             ] = Just KG_Ds_EbSus2
-                        | sp `sEQ` [Ds_Eb,G,As_Bb,C           ] = Just KG_Ds_Eb6
-                        | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb,C       ] = Just KG_Ds_EbMinor6
-                        | sp `sEQ` [Ds_Eb,F,G,As_Bb,Cs_Db     ] = Just KG_Ds_Eb9            -- end Ds_Eb
-
-                        | sp `sEQ` [E,Gs_Ab,B                 ] = Just KG_EMajor            -- Begin E
-                        | sp `sEQ` [E,G,B                     ] = Just KG_EMinor
-                        | sp `sEQ` [E,B                       ] = Just KG_E5
-                        | sp `sEQ` [E,Gs_Ab,B,D               ] = Just KG_EDominant7
-                        | sp `sEQ` [E,Gs_Ab,B,Ds_Eb           ] = Just KG_EMajor7
-                        | sp `sEQ` [E,G,B,D                   ] = Just KG_EMinor7
-                        | sp `sEQ` [E,G,B,Cs_Db               ] = Just KG_EMinorMajor7
-                        | sp `sEQ` [E,A,B                     ] = Just KG_ESus4
-                        | sp `sEQ` [E,Fs_Gb,B                 ] = Just KG_ESus2
-                        | sp `sEQ` [E,Gs_Ab,B,Cs_Db           ] = Just KG_E6
-                        | sp `sEQ` [E,G,B,Cs_Db               ] = Just KG_EMinor6
-                        | sp `sEQ` [E,Fs_Gb,Gs_Ab,B,D         ] = Just KG_E9                -- end E
-
-                        | sp `sEQ` [F,A,C                     ] = Just KG_F_EsMajor         -- Begin F_Es
-                        | sp `sEQ` [F,Gs_Ab,C                 ] = Just KG_F_EsMinor
-                        | sp `sEQ` [F,C                       ] = Just KG_F_Es5
-                        | sp `sEQ` [F,G,C,Ds_Eb               ] = Just KG_F_EsDominant7
-                        | sp `sEQ` [F,A,C,E                   ] = Just KG_F_EsMajor7
-                        | sp `sEQ` [F,Gs_Ab,C,Ds_Eb           ] = Just KG_F_EsMinor7
-                        | sp `sEQ` [F,Gs_Ab,C,E               ] = Just KG_F_EsMinorMajor7
-                        | sp `sEQ` [F,As_Bb,C                 ] = Just KG_F_EsSus4
-                        | sp `sEQ` [F,G,C                     ] = Just KG_F_EsSus2
-                        | sp `sEQ` [F,A,C,D                   ] = Just KG_F_Es6
-                        | sp `sEQ` [F,Gs_Ab,C,D               ] = Just KG_F_EsMinor6
-                        | sp `sEQ` [F,G,A,C,Ds_Eb             ] = Just KG_F_Es9             -- end F_Es
-
-                        | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db         ] = Just KG_Fs_GbMajor        -- Begin Fs_Gb
-                        | sp `sEQ` [Fs_Gb,A,Cs_Db             ] = Just KG_Fs_GbMinor
-                        | sp `sEQ` [Fs_Gb,Cs_Db               ] = Just KG_Fs_Gb5
-                        | sp `sEQ` [Fs_Gb,Fs_Gb,As_Bb,E       ] = Just KG_Fs_GbDominant7
-                        | sp `sEQ` [Fs_Gb,As_Bb,F             ] = Just KG_Fs_GbMajor7
-                        | sp `sEQ` [Fs_Gb,A,Cs_Db,E           ] = Just KG_Fs_GbMinor7
-                        | sp `sEQ` [Fs_Gb,A,Cs_Db,F           ] = Just KG_Fs_GbMinorMajor7
-                        | sp `sEQ` [Fs_Gb,B,Cs_Db             ] = Just KG_Fs_GbSus4
-                        | sp `sEQ` [Fs_Gb,Gs_Ab,Cs_Db         ] = Just KG_Fs_GbSus2
-                        | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db,Ds_Eb   ] = Just KG_Fs_Gb6
-                        | sp `sEQ` [Fs_Gb,A,Cs_Db,Ds_Eb       ] = Just KG_Fs_GbMinor6
-                        | sp `sEQ` [Fs_Gb,Gs_Ab,As_Bb,E       ] = Just KG_Fs_Gb9            --end Fs_Gb
-
-                        | sp `sEQ` [G,B,D                     ] = Just KG_GMajor            --Begin G
-                        | sp `sEQ` [G,As_Bb,D                 ] = Just KG_GMinor
-                        | sp `sEQ` [G,D                       ] = Just KG_G5
-                        | sp `sEQ` [G,B,D,F                   ] = Just KG_GDominant7
-                        | sp `sEQ` [G,B,D,Fs_Gb               ] = Just KG_GMajor7
-                        | sp `sEQ` [G,As_Bb,D,F               ] = Just KG_GMinor7
-                        | sp `sEQ` [G,As_Bb,D,Fs_Gb           ] = Just KG_GMinorMajor7
-                        | sp `sEQ` [G,C,D                     ] = Just KG_GSus4
-                        | sp `sEQ` [G,A,D                     ] = Just KG_GSus2
-                        | sp `sEQ` [G,B,D,E                   ] = Just KG_G6
-                        | sp `sEQ` [G,As_Bb,D,E               ] = Just KG_Gs_AbMinor6
-                        | sp `sEQ` [G,A,B,D,F                 ] = Just KG_Gs_Ab9            -- end G
-
-                        | sp `sEQ` [Gs_Ab,C,Ds_Eb             ] = Just KG_Gs_AbMajor        -- Begin Gs_Ab
-                        | sp `sEQ` [Gs_Ab,B,Ds_Eb             ] = Just KG_Gs_AbMinor
-                        | sp `sEQ` [Gs_Ab,Ds_Eb               ] = Just KG_Gs_Ab5
-                        | sp `sEQ` [Gs_Ab,C,Ds_Eb,Cs_Db       ] = Just KG_Gs_AbDominant7
-                        | sp `sEQ` [Gs_Ab,C,Ds_Eb,G           ] = Just KG_Gs_AbMajor7
-                        | sp `sEQ` [Gs_Ab,B,Ds_Eb,Cs_Db       ] = Just KG_Gs_AbMinor7
-                        | sp `sEQ` [Gs_Ab,B,Ds_Eb,G           ] = Just KG_Gs_AbMinorMajor7
-                        | sp `sEQ` [Gs_Ab,Cs_Db,Ds_Eb         ] = Just KG_Gs_AbSus4
-                        | sp `sEQ` [Gs_Ab,As_Bb,Ds_Eb         ] = Just KG_Gs_AbSus2
-                        | sp `sEQ` [Gs_Ab,C,Ds_Eb,F           ] = Just KG_Gs_Ab6
-                        | sp `sEQ` [Gs_Ab,B,Ds_Eb,F           ] = Just KG_Gs_AbMinor6
-                        | sp `sEQ` [Gs_Ab,As_Bb,C,Ds_Eb,Fs_Gb ] = Just KG_Gs_Ab9            --end Gs_Ab
-
-                        | sp `sEQ` [A,Cs_Db,E                 ] = Just KG_AMajor            --Begin A
-                        | sp `sEQ` [A,C,E                     ] = Just KG_AMinor
-                        | sp `sEQ` [A,E                       ] = Just KG_A5
-                        | sp `sEQ` [A,Cs_Db,E,G               ] = Just KG_ADominant7
-                        | sp `sEQ` [A,Cs_Db,E,Gs_Ab           ] = Just KG_AMajor7
-                        | sp `sEQ` [A,C,E,G                   ] = Just KG_AMinor7
-                        | sp `sEQ` [A,C,E,Gs_Ab               ] = Just KG_AMinorMajor7
-                        | sp `sEQ` [A,D,E                     ] = Just KG_ASus4
-                        | sp `sEQ` [A,B,E                     ] = Just KG_ASus2
-                        | sp `sEQ` [A,Cs_Db,Fs_Gb             ] = Just KG_A6
-                        | sp `sEQ` [A,C,E,Fs_Gb               ] = Just KG_AMinor6
-                        | sp `sEQ` [A,B,Cs_Db,E,G             ] = Just KG_A9                -- end A
-
-                        | sp `sEQ` [As_Bb,D,F                 ] = Just KG_As_BbMajor        -- Begin As_Bb
-                        | sp `sEQ` [As_Bb,Cs_Db,F             ] = Just KG_As_BbMinor
-                        | sp `sEQ` [As_Bb,F                   ] = Just KG_As_Bb5
-                        | sp `sEQ` [As_Bb,D,F,Gs_Ab           ] = Just KG_As_BbDominant7
-                        | sp `sEQ` [As_Bb,D,F,A               ] = Just KG_As_BbMajor7
-                        | sp `sEQ` [As_Bb,Cs_Db,F,Gs_Ab       ] = Just KG_As_BbMinor7
-                        | sp `sEQ` [As_Bb,Cs_Db,F,A           ] = Just KG_As_BbMinorMajor7
-                        | sp `sEQ` [As_Bb,Ds_Eb,F             ] = Just KG_As_BbSus4
-                        | sp `sEQ` [As_Bb,C,F                 ] = Just KG_As_BbSus2
-                        | sp `sEQ` [As_Bb,D,F,G               ] = Just KG_As_Bb6
-                        | sp `sEQ` [As_Bb,Cs_Db,F,G           ] = Just KG_As_BbMinor6
-                        | sp `sEQ` [As_Bb,C,D,F,Gs_Ab         ] = Just KG_As_Bb9            -- end As_Bb
-
-                        | sp `sEQ` [B,Ds_Eb,Fs_Gb             ] = Just KG_B_CbMajor         -- Begin B_Cb
-                        | sp `sEQ` [B,D,Fs_Gb                 ] = Just KG_B_CbMinor
-                        | sp `sEQ` [B,Fs_Gb                   ] = Just KG_B_Cb5
-                        | sp `sEQ` [B,Ds_Eb,Fs_Gb,A           ] = Just KG_B_CbDominant7
-                        | sp `sEQ` [B,Ds_Eb,Fs_Gb,As_Bb       ] = Just KG_B_CbMajor7
-                        | sp `sEQ` [B,D,Fs_Gb,A               ] = Just KG_B_CbMinor7
-                        | sp `sEQ` [B,D,Fs_Gb,As_Bb           ] = Just KG_B_CbMinorMajor7
-                        | sp `sEQ` [B,E,Fs_Gb                 ] = Just KG_B_CbSus4
-                        | sp `sEQ` [B,Cs_Db,Fs_Gb             ] = Just KG_B_CbSus2
-                        | sp `sEQ` [B,Ds_Eb,Fs_Gb,Gs_Ab       ] = Just KG_B_Cb6
-                        | sp `sEQ` [B,D,Fs_Gb,Gs_Ab           ] = Just KG_B_CbMinor6
-                        | sp `sEQ` [B,Cs_Db,Ds_Eb,Fs_Gb,A     ] = Just KG_B_Cb9             -- end B_Cb
-                        | otherwise                             = Nothing                -- Broken [SigPitch] deserves Nothing !!!
-
+              | sp `sEQ` [C,Ds_Eb,G                 ] = Just KG_CMinor
+              | sp `sEQ` [C,G                       ] = Just KG_C5
+              | sp `sEQ` [C,E,G,As_Bb               ] = Just KG_CDominant7
+              | sp `sEQ` [C,E,G,B                   ] = Just KG_CMajor7
+              | sp `sEQ` [C,Ds_Eb,G,As_Bb           ] = Just KG_CMinor7
+              | sp `sEQ` [C,Ds_Eb,G,B               ] = Just KG_CMinorMajor7
+              | sp `sEQ` [C,F,G                     ] = Just KG_CSus4
+              | sp `sEQ` [C,D,G                     ] = Just KG_CSus2
+              | sp `sEQ` [C,E,G,A                   ] = Just KG_C6
+              | sp `sEQ` [C,Ds_Eb,G,A               ] = Just KG_CMinor6
+              | sp `sEQ` [C,E,G,As_Bb               ] = Just KG_C9
+                                                        
+              | sp `sEQ` [Cs_Db,F,Gs_Ab             ] = Just KG_Cs_DbMajor        -- Begin Cs_DbMajor
+              | sp `sEQ` [Cs_Db,E,Gs_Ab             ] = Just KG_Cs_DbMinor
+              | sp `sEQ` [Cs_Db,Gs_Ab               ] = Just KG_Cs_Db5
+              | sp `sEQ` [Cs_Db,G,Gs_Ab,B           ] = Just KG_Cs_DbDominant7
+              | sp `sEQ` [Cs_Db,F,Gs_Ab,C           ] = Just KG_Cs_DbMajor7
+              | sp `sEQ` [Cs_Db,E,Gs_Ab,B           ] = Just KG_Cs_DbMinor7
+              | sp `sEQ` [Cs_Db,E,Gs_Ab,C           ] = Just KG_Cs_DbMinorMajor7
+              | sp `sEQ` [Cs_Db,Fs_Gb,Gs_Ab         ] = Just KG_Cs_DbSus4
+              | sp `sEQ` [Cs_Db,Ds_Eb,Gs_Ab         ] = Just KG_Cs_DbSus2
+              | sp `sEQ` [Cs_Db,F,Gs_Ab,As_Bb       ] = Just KG_Cs_Db6
+              | sp `sEQ` [Cs_Db,E,Gs_Ab,As_Bb       ] = Just KG_Cs_DbMinor6
+              | sp `sEQ` [Cs_Db,Ds_Eb,F,Gs_Ab,B     ] = Just KG_Cs_Db9            -- end Cs_Db
+                                                        
+              | sp `sEQ` [D,Fs_Gb,A                 ] = Just KG_DMajor            -- Begin D
+              | sp `sEQ` [D,F,A                     ] = Just KG_DMinor
+              | sp `sEQ` [D,A                       ] = Just KG_D5
+              | sp `sEQ` [D,Fs_Gb,A,C               ] = Just KG_DDominant7
+              | sp `sEQ` [D,Fs_Gb,A,Cs_Db           ] = Just KG_DMajor7
+              | sp `sEQ` [D,F,A,C                   ] = Just KG_DMinor7
+              | sp `sEQ` [D,F,G,Cs_Db               ] = Just KG_DMinorMajor7
+              | sp `sEQ` [D,G,A                     ] = Just KG_DSus4
+              | sp `sEQ` [D,E,A                     ] = Just KG_DSus2
+              | sp `sEQ` [D,Fs_Gb,A,B               ] = Just KG_D6
+              | sp `sEQ` [D,F,A,B                   ] = Just KG_DMinor6
+              | sp `sEQ` [D,E,Fs_Gb,A,C             ] = Just KG_D9                -- end DMajor
+                                                        
+              | sp `sEQ` [Ds_Eb,G,As_Bb             ] = Just KG_Ds_EbMajor        -- Begin Ds_Eb
+              | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb         ] = Just KG_Ds_EbMinor
+              | sp `sEQ` [Ds_Eb,As_Bb               ] = Just KG_Ds_Eb5
+              | sp `sEQ` [Ds_Eb,G,As_Bb,Cs_Db       ] = Just KG_Ds_EbDominant7
+              | sp `sEQ` [Ds_Eb,G,As_Bb,D           ] = Just KG_Ds_EbMajor7
+              | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb,Cs_Db   ] = Just KG_Ds_EbMinor7
+              | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb,D       ] = Just KG_Ds_EbMinorMajor7
+              | sp `sEQ` [Ds_Eb,Gs_Ab,As_Bb         ] = Just KG_Ds_EbSus4
+              | sp `sEQ` [Ds_Eb,F,As_Bb             ] = Just KG_Ds_EbSus2
+              | sp `sEQ` [Ds_Eb,G,As_Bb,C           ] = Just KG_Ds_Eb6
+              | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb,C       ] = Just KG_Ds_EbMinor6
+              | sp `sEQ` [Ds_Eb,F,G,As_Bb,Cs_Db     ] = Just KG_Ds_Eb9            -- end Ds_Eb
+                                                        
+              | sp `sEQ` [E,Gs_Ab,B                 ] = Just KG_EMajor            -- Begin E
+              | sp `sEQ` [E,G,B                     ] = Just KG_EMinor
+              | sp `sEQ` [E,B                       ] = Just KG_E5
+              | sp `sEQ` [E,Gs_Ab,B,D               ] = Just KG_EDominant7
+              | sp `sEQ` [E,Gs_Ab,B,Ds_Eb           ] = Just KG_EMajor7
+              | sp `sEQ` [E,G,B,D                   ] = Just KG_EMinor7
+              | sp `sEQ` [E,G,B,Cs_Db               ] = Just KG_EMinorMajor7
+              | sp `sEQ` [E,A,B                     ] = Just KG_ESus4
+              | sp `sEQ` [E,Fs_Gb,B                 ] = Just KG_ESus2
+              | sp `sEQ` [E,Gs_Ab,B,Cs_Db           ] = Just KG_E6
+              | sp `sEQ` [E,G,B,Cs_Db               ] = Just KG_EMinor6
+              | sp `sEQ` [E,Fs_Gb,Gs_Ab,B,D         ] = Just KG_E9                -- end E
+                                                        
+              | sp `sEQ` [F,A,C                     ] = Just KG_F_EsMajor         -- Begin F_Es
+              | sp `sEQ` [F,Gs_Ab,C                 ] = Just KG_F_EsMinor
+              | sp `sEQ` [F,C                       ] = Just KG_F_Es5
+              | sp `sEQ` [F,G,C,Ds_Eb               ] = Just KG_F_EsDominant7
+              | sp `sEQ` [F,A,C,E                   ] = Just KG_F_EsMajor7
+              | sp `sEQ` [F,Gs_Ab,C,Ds_Eb           ] = Just KG_F_EsMinor7
+              | sp `sEQ` [F,Gs_Ab,C,E               ] = Just KG_F_EsMinorMajor7
+              | sp `sEQ` [F,As_Bb,C                 ] = Just KG_F_EsSus4
+              | sp `sEQ` [F,G,C                     ] = Just KG_F_EsSus2
+              | sp `sEQ` [F,A,C,D                   ] = Just KG_F_Es6
+              | sp `sEQ` [F,Gs_Ab,C,D               ] = Just KG_F_EsMinor6
+              | sp `sEQ` [F,G,A,C,Ds_Eb             ] = Just KG_F_Es9             -- end F_Es
+                                                        
+              | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db         ] = Just KG_Fs_GbMajor        -- Begin Fs_Gb
+              | sp `sEQ` [Fs_Gb,A,Cs_Db             ] = Just KG_Fs_GbMinor
+              | sp `sEQ` [Fs_Gb,Cs_Db               ] = Just KG_Fs_Gb5
+              | sp `sEQ` [Fs_Gb,Fs_Gb,As_Bb,E       ] = Just KG_Fs_GbDominant7
+              | sp `sEQ` [Fs_Gb,As_Bb,F             ] = Just KG_Fs_GbMajor7
+              | sp `sEQ` [Fs_Gb,A,Cs_Db,E           ] = Just KG_Fs_GbMinor7
+              | sp `sEQ` [Fs_Gb,A,Cs_Db,F           ] = Just KG_Fs_GbMinorMajor7
+              | sp `sEQ` [Fs_Gb,B,Cs_Db             ] = Just KG_Fs_GbSus4
+              | sp `sEQ` [Fs_Gb,Gs_Ab,Cs_Db         ] = Just KG_Fs_GbSus2
+              | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db,Ds_Eb   ] = Just KG_Fs_Gb6
+              | sp `sEQ` [Fs_Gb,A,Cs_Db,Ds_Eb       ] = Just KG_Fs_GbMinor6
+              | sp `sEQ` [Fs_Gb,Gs_Ab,As_Bb,E       ] = Just KG_Fs_Gb9            --end Fs_Gb
+                                                        
+              | sp `sEQ` [G,B,D                     ] = Just KG_GMajor            --Begin G
+              | sp `sEQ` [G,As_Bb,D                 ] = Just KG_GMinor
+              | sp `sEQ` [G,D                       ] = Just KG_G5
+              | sp `sEQ` [G,B,D,F                   ] = Just KG_GDominant7
+              | sp `sEQ` [G,B,D,Fs_Gb               ] = Just KG_GMajor7
+              | sp `sEQ` [G,As_Bb,D,F               ] = Just KG_GMinor7
+              | sp `sEQ` [G,As_Bb,D,Fs_Gb           ] = Just KG_GMinorMajor7
+              | sp `sEQ` [G,C,D                     ] = Just KG_GSus4
+              | sp `sEQ` [G,A,D                     ] = Just KG_GSus2
+              | sp `sEQ` [G,B,D,E                   ] = Just KG_G6
+              | sp `sEQ` [G,As_Bb,D,E               ] = Just KG_Gs_AbMinor6
+              | sp `sEQ` [G,A,B,D,F                 ] = Just KG_Gs_Ab9            -- end G
+                                                        
+              | sp `sEQ` [Gs_Ab,C,Ds_Eb             ] = Just KG_Gs_AbMajor        -- Begin Gs_Ab
+              | sp `sEQ` [Gs_Ab,B,Ds_Eb             ] = Just KG_Gs_AbMinor
+              | sp `sEQ` [Gs_Ab,Ds_Eb               ] = Just KG_Gs_Ab5
+              | sp `sEQ` [Gs_Ab,C,Ds_Eb,Cs_Db       ] = Just KG_Gs_AbDominant7
+              | sp `sEQ` [Gs_Ab,C,Ds_Eb,G           ] = Just KG_Gs_AbMajor7
+              | sp `sEQ` [Gs_Ab,B,Ds_Eb,Cs_Db       ] = Just KG_Gs_AbMinor7
+              | sp `sEQ` [Gs_Ab,B,Ds_Eb,G           ] = Just KG_Gs_AbMinorMajor7
+              | sp `sEQ` [Gs_Ab,Cs_Db,Ds_Eb         ] = Just KG_Gs_AbSus4
+              | sp `sEQ` [Gs_Ab,As_Bb,Ds_Eb         ] = Just KG_Gs_AbSus2
+              | sp `sEQ` [Gs_Ab,C,Ds_Eb,F           ] = Just KG_Gs_Ab6
+              | sp `sEQ` [Gs_Ab,B,Ds_Eb,F           ] = Just KG_Gs_AbMinor6
+              | sp `sEQ` [Gs_Ab,As_Bb,C,Ds_Eb,Fs_Gb ] = Just KG_Gs_Ab9            --end Gs_Ab
+                                                        
+              | sp `sEQ` [A,Cs_Db,E                 ] = Just KG_AMajor            --Begin A
+              | sp `sEQ` [A,C,E                     ] = Just KG_AMinor
+              | sp `sEQ` [A,E                       ] = Just KG_A5
+              | sp `sEQ` [A,Cs_Db,E,G               ] = Just KG_ADominant7
+              | sp `sEQ` [A,Cs_Db,E,Gs_Ab           ] = Just KG_AMajor7
+              | sp `sEQ` [A,C,E,G                   ] = Just KG_AMinor7
+              | sp `sEQ` [A,C,E,Gs_Ab               ] = Just KG_AMinorMajor7
+              | sp `sEQ` [A,D,E                     ] = Just KG_ASus4
+              | sp `sEQ` [A,B,E                     ] = Just KG_ASus2
+              | sp `sEQ` [A,Cs_Db,Fs_Gb             ] = Just KG_A6
+              | sp `sEQ` [A,C,E,Fs_Gb               ] = Just KG_AMinor6
+              | sp `sEQ` [A,B,Cs_Db,E,G             ] = Just KG_A9                -- end A
+                                                        
+              | sp `sEQ` [As_Bb,D,F                 ] = Just KG_As_BbMajor        -- Begin As_Bb
+              | sp `sEQ` [As_Bb,Cs_Db,F             ] = Just KG_As_BbMinor
+              | sp `sEQ` [As_Bb,F                   ] = Just KG_As_Bb5
+              | sp `sEQ` [As_Bb,D,F,Gs_Ab           ] = Just KG_As_BbDominant7
+              | sp `sEQ` [As_Bb,D,F,A               ] = Just KG_As_BbMajor7
+              | sp `sEQ` [As_Bb,Cs_Db,F,Gs_Ab       ] = Just KG_As_BbMinor7
+              | sp `sEQ` [As_Bb,Cs_Db,F,A           ] = Just KG_As_BbMinorMajor7
+              | sp `sEQ` [As_Bb,Ds_Eb,F             ] = Just KG_As_BbSus4
+              | sp `sEQ` [As_Bb,C,F                 ] = Just KG_As_BbSus2
+              | sp `sEQ` [As_Bb,D,F,G               ] = Just KG_As_Bb6
+              | sp `sEQ` [As_Bb,Cs_Db,F,G           ] = Just KG_As_BbMinor6
+              | sp `sEQ` [As_Bb,C,D,F,Gs_Ab         ] = Just KG_As_Bb9            -- end As_Bb
+                                                        
+              | sp `sEQ` [B,Ds_Eb,Fs_Gb             ] = Just KG_B_CbMajor         -- Begin B_Cb
+              | sp `sEQ` [B,D,Fs_Gb                 ] = Just KG_B_CbMinor
+              | sp `sEQ` [B,Fs_Gb                   ] = Just KG_B_Cb5
+              | sp `sEQ` [B,Ds_Eb,Fs_Gb,A           ] = Just KG_B_CbDominant7
+              | sp `sEQ` [B,Ds_Eb,Fs_Gb,As_Bb       ] = Just KG_B_CbMajor7
+              | sp `sEQ` [B,D,Fs_Gb,A               ] = Just KG_B_CbMinor7
+              | sp `sEQ` [B,D,Fs_Gb,As_Bb           ] = Just KG_B_CbMinorMajor7
+              | sp `sEQ` [B,E,Fs_Gb                 ] = Just KG_B_CbSus4
+              | sp `sEQ` [B,Cs_Db,Fs_Gb             ] = Just KG_B_CbSus2
+              | sp `sEQ` [B,Ds_Eb,Fs_Gb,Gs_Ab       ] = Just KG_B_Cb6
+              | sp `sEQ` [B,D,Fs_Gb,Gs_Ab           ] = Just KG_B_CbMinor6
+              | sp `sEQ` [B,Cs_Db,Ds_Eb,Fs_Gb,A     ] = Just KG_B_Cb9             -- end B_Cb
+              | otherwise                             = Nothing                   -- Broken [SigPitch] deserves Nothing !!!
   where
     sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
     sEQ a b = sort a == sort b
@@ -680,3 +605,311 @@ fromKeyGuide KG_B_CbSus2         = B:Cs_Db:Fs_Gb             :[]
 fromKeyGuide KG_B_Cb6            = B:Ds_Eb:Fs_Gb:Gs_Ab       :[]
 fromKeyGuide KG_B_CbMinor6       = B:D:Fs_Gb:Gs_Ab           :[]
 fromKeyGuide KG_B_Cb9            = B:Cs_Db:Ds_Eb:Fs_Gb:A     :[] -- End B_Cb
+
+
+toMidi :: Note -> Int
+toMidi A0      = 21
+toMidi As0_Bb0 = 22
+toMidi B0      = 23
+toMidi C1      = 24
+toMidi Cs1_Db1 = 25
+toMidi D1      = 26
+toMidi Ds1_Eb1 = 27
+toMidi E1      = 28
+toMidi F1      = 29
+toMidi Fs1_Gb1 = 30
+toMidi G1      = 31
+toMidi Gs1_Ab1 = 32
+toMidi A1      = 33
+toMidi As1_Bb1 = 34
+toMidi B1      = 35
+toMidi C2      = 36
+toMidi Cs2_Db2 = 37
+toMidi D2      = 38
+toMidi Ds2_Eb2 = 39
+toMidi E2      = 40
+toMidi F2      = 41
+toMidi Fs2_Gb2 = 42
+toMidi G2      = 43
+toMidi Gs2_Ab2 = 44
+toMidi A2      = 45
+toMidi As2_Bb2 = 46
+toMidi B2      = 47
+toMidi C3      = 48
+toMidi Cs3_Db3 = 49
+toMidi D3      = 50
+toMidi Ds3_Eb3 = 51
+toMidi E3      = 52
+toMidi F3      = 53
+toMidi Fs3_Gb3 = 54
+toMidi G3      = 55
+toMidi Gs3_Ab3 = 56
+toMidi A3      = 57
+toMidi As3_Bb3 = 58
+toMidi B3      = 59
+toMidi C4      = 60
+toMidi Cs4_Db4 = 61
+toMidi D4      = 62
+toMidi Ds4_Eb4 = 63
+toMidi E4      = 64
+toMidi F4      = 65
+toMidi Fs4_Gb4 = 66
+toMidi G4      = 67
+toMidi Gs4_Ab4 = 68
+toMidi A4      = 69
+toMidi As4_Bb4 = 70
+toMidi B4      = 71
+toMidi C5      = 72
+toMidi Cs5_Db5 = 73
+toMidi D5      = 74
+toMidi Ds5_Eb5 = 75
+toMidi E5      = 76
+toMidi F5      = 77
+toMidi Fs5_Gb5 = 78
+toMidi G5      = 79
+toMidi Gs5_Ab5 = 80
+toMidi A5      = 81
+toMidi As5_Bb5 = 82
+toMidi B5      = 83
+toMidi C6      = 84
+toMidi Cs6_Db6 = 85
+toMidi D6      = 86
+toMidi Ds6_Eb6 = 87
+toMidi E6      = 88
+toMidi F6      = 89
+toMidi Fs6_Gb6 = 90
+toMidi G6      = 91
+toMidi Gs6_Ab6 = 92
+toMidi A6      = 93
+toMidi As6_Bb6 = 94
+toMidi B6      = 95
+toMidi C7      = 96
+toMidi Cs7_Db7 = 97
+toMidi D7      = 98
+toMidi Ds7_Eb7 = 99
+toMidi E7      = 100
+toMidi F7      = 101
+toMidi Fs7_Gb7 = 102
+toMidi G7      = 103
+toMidi Gs7_Ab7 = 104
+toMidi A7      = 105
+toMidi As7_Bb7 = 106
+toMidi B7      = 107
+toMidi C8      = 108
+
+fromMidi :: Int -> Maybe Note
+fromMidi 21  = Just A0
+fromMidi 22  = Just As0_Bb0
+fromMidi 23  = Just B0
+fromMidi 24  = Just C1
+fromMidi 25  = Just Cs1_Db1
+fromMidi 26  = Just D1
+fromMidi 27  = Just Ds1_Eb1
+fromMidi 28  = Just E1
+fromMidi 29  = Just F1
+fromMidi 30  = Just Fs1_Gb1
+fromMidi 31  = Just G1
+fromMidi 32  = Just Gs1_Ab1
+fromMidi 33  = Just A1
+fromMidi 34  = Just As1_Bb1
+fromMidi 35  = Just B1
+fromMidi 36  = Just C2
+fromMidi 37  = Just Cs2_Db2
+fromMidi 38  = Just D2
+fromMidi 39  = Just Ds2_Eb2
+fromMidi 40  = Just E2
+fromMidi 41  = Just F2
+fromMidi 42  = Just Fs2_Gb2
+fromMidi 43  = Just G2
+fromMidi 44  = Just Gs2_Ab2
+fromMidi 45  = Just A2
+fromMidi 46  = Just As2_Bb2
+fromMidi 47  = Just B2
+fromMidi 48  = Just C3
+fromMidi 49  = Just Cs3_Db3
+fromMidi 50  = Just D3
+fromMidi 51  = Just Ds3_Eb3
+fromMidi 52  = Just E3
+fromMidi 53  = Just F3
+fromMidi 54  = Just Fs3_Gb3
+fromMidi 55  = Just G3
+fromMidi 56  = Just Gs3_Ab3
+fromMidi 57  = Just A3
+fromMidi 58  = Just As3_Bb3
+fromMidi 59  = Just B3
+fromMidi 60  = Just C4
+fromMidi 61  = Just Cs4_Db4
+fromMidi 62  = Just D4
+fromMidi 63  = Just Ds4_Eb4
+fromMidi 64  = Just E4
+fromMidi 65  = Just F4
+fromMidi 66  = Just Fs4_Gb4
+fromMidi 67  = Just G4
+fromMidi 68  = Just Gs4_Ab4
+fromMidi 69  = Just A4
+fromMidi 70  = Just As4_Bb4
+fromMidi 71  = Just B4
+fromMidi 72  = Just C5
+fromMidi 73  = Just Cs5_Db5
+fromMidi 74  = Just D5
+fromMidi 75  = Just Ds5_Eb5
+fromMidi 76  = Just E5
+fromMidi 77  = Just F5
+fromMidi 78  = Just Fs5_Gb5
+fromMidi 79  = Just G5
+fromMidi 80  = Just Gs5_Ab5
+fromMidi 81  = Just A5
+fromMidi 82  = Just As5_Bb5
+fromMidi 83  = Just B5
+fromMidi 84  = Just C6
+fromMidi 85  = Just Cs6_Db6
+fromMidi 86  = Just D6
+fromMidi 87  = Just Ds6_Eb6
+fromMidi 88  = Just E6
+fromMidi 89  = Just F6
+fromMidi 90  = Just Fs6_Gb6
+fromMidi 91  = Just G6
+fromMidi 92  = Just Gs6_Ab6
+fromMidi 93  = Just A6
+fromMidi 94  = Just As6_Bb6
+fromMidi 95  = Just B6
+fromMidi 96  = Just C7
+fromMidi 97  = Just Cs7_Db7
+fromMidi 98  = Just D7
+fromMidi 99  = Just Ds7_Eb7
+fromMidi 100 = Just E7
+fromMidi 101 = Just F7
+fromMidi 102 = Just Fs7_Gb7
+fromMidi 103 = Just G7
+fromMidi 104 = Just Gs7_Ab7
+fromMidi 105 = Just A7
+fromMidi 106 = Just As7_Bb7
+fromMidi 107 = Just B7
+fromMidi 108 = Just C8
+fromMidi _   = Nothing
+
+toNotesBySigPitch :: SigPitch -> [] Note
+toNotesBySigPitch A     = [A0,A1,A2,A3,A4,A5,A6,A7]
+toNotesBySigPitch As_Bb = [As0_Bb0,As1_Bb1,As2_Bb2,As3_Bb3,As4_Bb4,As5_Bb5,As6_Bb6,As7_Bb7]
+toNotesBySigPitch B     = [B0,B1,B2,B3,B4,B5,B6,B7]
+toNotesBySigPitch C     = [C1,C2,C3,C4,C5,C6,C7,C8]
+toNotesBySigPitch Cs_Db = [Cs1_Db1,Cs2_Db2,Cs3_Db3,Cs4_Db4,Cs5_Db5,Cs6_Db6,Cs7_Db7]
+toNotesBySigPitch D     = [D1,D2,D3,D4,D5,D6,D7]
+toNotesBySigPitch Ds_Eb = [Ds1_Eb1,Ds2_Eb2,Ds3_Eb3,Ds4_Eb4,Ds5_Eb5,Ds6_Eb6,Ds7_Eb7]
+toNotesBySigPitch E     = [E1,E2,E3,E4,E5,E6,E7]
+toNotesBySigPitch F     = [F1,F2,F3,F4,F5,F6,F7]
+toNotesBySigPitch Fs_Gb = [Fs1_Gb1,Fs2_Gb2,Fs3_Gb3,Fs4_Gb4,Fs5_Gb5,Fs6_Gb6,Fs7_Gb7]
+toNotesBySigPitch G     = [G1,G2,G3,G4,G5,G6,G7]
+toNotesBySigPitch Gs_Ab = [Gs1_Ab1,Gs2_Ab2,Gs3_Ab3,Gs4_Ab4,Gs5_Ab5,Gs6_Ab6,Gs7_Ab7]
+
+fromOctave :: Int -> [] Note
+fromOctave 0 = [A0,As0_Bb0,B0]
+fromOctave 1 = [C1,Cs1_Db1,D1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1]
+fromOctave 2 = [C2,Cs2_Db2,D2,Ds2_Eb2,E2,F2,Fs2_Gb2,G2,Gs2_Ab2,A2,As2_Bb2,B2]
+fromOctave 3 = [C3,Cs3_Db3,D3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3]
+fromOctave 4 = [C4,Cs4_Db4,D4,Ds4_Eb4,E4,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4]
+fromOctave 5 = [C5,Cs5_Db5,D5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5]
+fromOctave 6 = [C6,Cs6_Db6,D6,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6]
+fromOctave 7 = [C7,Cs7_Db7,D7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7]
+fromOctave 8 = [C8]
+fromOctave _ = []
+
+toNoteBySigOctave :: SigPitch -> Int -> Maybe Note
+toNoteBySigOctave sp n = if null intersection
+                          then Nothing
+                          else Just (head intersection)
+  where
+    fo = fromOctave n
+    tn = toNotesBySigPitch sp
+    intersection = intersect fo tn
+
+toOctave :: Note -> Int
+toOctave A0      = 0
+toOctave As0_Bb0 = 0
+toOctave B0      = 0
+toOctave C1      = 1
+toOctave Cs1_Db1 = 1
+toOctave D1      = 1
+toOctave Ds1_Eb1 = 1
+toOctave E1      = 1
+toOctave F1      = 1
+toOctave Fs1_Gb1 = 1
+toOctave G1      = 1
+toOctave Gs1_Ab1 = 1
+toOctave A1      = 1
+toOctave As1_Bb1 = 1
+toOctave B1      = 1
+toOctave C2      = 2
+toOctave Cs2_Db2 = 2
+toOctave D2      = 2
+toOctave Ds2_Eb2 = 2
+toOctave E2      = 2
+toOctave F2      = 2
+toOctave Fs2_Gb2 = 2
+toOctave G2      = 2
+toOctave Gs2_Ab2 = 2
+toOctave A2      = 2
+toOctave As2_Bb2 = 2
+toOctave B2      = 2
+toOctave C3      = 3
+toOctave Cs3_Db3 = 3
+toOctave D3      = 3
+toOctave Ds3_Eb3 = 3
+toOctave E3      = 3
+toOctave F3      = 3
+toOctave Fs3_Gb3 = 3
+toOctave G3      = 3
+toOctave Gs3_Ab3 = 3
+toOctave A3      = 3
+toOctave As3_Bb3 = 3
+toOctave B3      = 3
+toOctave C4      = 4
+toOctave Cs4_Db4 = 4
+toOctave D4      = 4
+toOctave Ds4_Eb4 = 4
+toOctave E4      = 4
+toOctave F4      = 4
+toOctave Fs4_Gb4 = 4
+toOctave G4      = 4
+toOctave Gs4_Ab4 = 4
+toOctave A4      = 4
+toOctave As4_Bb4 = 4
+toOctave B4      = 4
+toOctave C5      = 5
+toOctave Cs5_Db5 = 5
+toOctave D5      = 5
+toOctave Ds5_Eb5 = 5
+toOctave E5      = 5
+toOctave F5      = 5
+toOctave Fs5_Gb5 = 5
+toOctave G5      = 5
+toOctave Gs5_Ab5 = 5
+toOctave A5      = 5
+toOctave As5_Bb5 = 5
+toOctave B5      = 5
+toOctave C6      = 6
+toOctave Cs6_Db6 = 6
+toOctave D6      = 6
+toOctave Ds6_Eb6 = 6
+toOctave E6      = 6
+toOctave F6      = 6
+toOctave Fs6_Gb6 = 6
+toOctave G6      = 6
+toOctave Gs6_Ab6 = 6
+toOctave A6      = 6
+toOctave As6_Bb6 = 6
+toOctave B6      = 6
+toOctave C7      = 7
+toOctave Cs7_Db7 = 7
+toOctave D7      = 7
+toOctave Ds7_Eb7 = 7
+toOctave E7      = 7
+toOctave F7      = 7
+toOctave Fs7_Gb7 = 7
+toOctave G7      = 7
+toOctave Gs7_Ab7 = 7
+toOctave A7      = 7
+toOctave As7_Bb7 = 7
+toOctave B7      = 7
+toOctave C8      = 8
+
