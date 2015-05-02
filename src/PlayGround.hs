@@ -1,20 +1,21 @@
 import Data.List (sort)
 
 
-All Notes = [C,Cs_Db,D,Ds_Eb,E,F_Es,Fs_Gb,G,Gs_Ab,A,As_Bb,B]
+All Notes = [C,Cs_Db,D,Ds_Eb,E,F,Fs_Gb,G,Gs_Ab,A,As_Bb,B]
 Super All Notes = [A0,As0/Bb0,C1,Cs1/Db1,Ds1/Eb1,E1,F1,Fs1/Gb1,G1,Gs1/Ab1,A1,As1/Bb1,B1,C2,Cs2/Db2,Ds2/Eb2,E2,F2,Fs2/Gb2,G,Gs2/Ab2,A2,As2/Bb2,B2,C3,Cs3/Db3,Ds3/Eb3,E3,F3,Fs3/Gb3,G3,Gs3/Ab3,A3,As3/Bb3,B3,C4,Cs4/Db4,Ds4/Eb4,E4,F4,Fs4/Gb4,G4,Gs4/Ab4,A4,As4/Bb4,B4,C5,Cs5/Db5,Ds5/Eb5,E5,F5,Fs5/Gb5,G5,Gs5/Ab5,A5,As5/Bb5,B5,C6,Cs6/Db6,Ds6/Eb6,E6,F6,Fs6/Gb6,G6,Gs6/Ab6,A6,As6/Bb6,B6,C7,Cs7/Db7,Ds7/Eb7,E7,F7,Fs7/Gb7,G7,Gs7/Ab7,A7,As7/Bb7,B7,C8]
 Super Midi Notes = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108]
 
 
 data SigPitch = C
               | D
-              | Ds_Ab
               | E
               | F
               | G
               | A
-              | As_Bb
               | B
+
+data SigPitch - Cs_Db
+	      |
                 deriving (Show, Ord, Eq) -- You can now perform math ops on SigPitch (e.g. (As < B), (C /= D), (G == G), etc.)
                                          -- Which means you can  sort [E, G, C] = [C,E,G] (same as C:E:G:[]) inside toCanonicalSignature
                                          -- and order is correct.
@@ -92,18 +93,18 @@ data CanonicalSignature = CMajor  --Begin C
                         | F_Es6
                         | F_EsMinor
                         | F_Es9   -- End F/Es
-                        | Fs_EbMajor  --Begin Fs/Eb
-                        | Fs_EbMinor
-                        | Fs_Eb5
-                        | Fs_EbDominant7
-                        | Fs_EbMajor7
-                        | Fs_EbMinor7
-                        | Fs_EbMinorMajor7
-                        | Fs_EbSus4
-                        | Fs_EbSus2
-                        | Fs_Eb6
-                        | Fs_EbMinor
-                        | Fs_Eb9   -- End Fs/Eb
+                        | Fs_GbMajor  --Begin Fs/Gb
+                        | Fs_GbMinor
+                        | Fs_Gb5
+                        | Fs_GbDominant7
+                        | Fs_GbMajor7
+                        | Fs_GbMinor7
+                        | Fs_GbMinorMajor7
+                        | Fs_GbSus4
+                        | Fs_GbSus2
+                        | Fs_Gb6
+                        | Fs_GbMinor
+                        | Fs_Gb9   -- End Fs/Eb
                         | GMajor  --Begin G
                         | GMinor
                         | G5
@@ -173,13 +174,13 @@ toCanonicalSignature sp | sp `sEQ` [C,E,G     				] = Just CMajor         -- sor
                         | sp `sEQ` [C,G       				] = Just C5
                         | sp `sEQ` [C,E,G,As_Bb 			] = Just CDominant7
                         | sp `sEQ` [C,E,G,B   				] = Just CMajor7
-                        | sp `sEQ` [C,Ds_Eb,G,As			] = Just CMinor7
+                        | sp `sEQ` [C,Ds_Eb,G,As_Bb			] = Just CMinor7
                         | sp `sEQ` [C,Ds_Eb,G,B 			] = Just CMinorMajor7
                         | sp `sEQ` [C,F,G     				] = Just CSus4
                         | sp `sEQ` [C,D,G     				] = Just CSus2
                         | sp `sEQ` [C,E,G,A   				] = Just C6
                         | sp `sEQ` [C,Ds_Eb,G,A 			] = Just CMinor6
-                        | sp `sEQ` [C,E,G,As  				] = Just C9
+                        | sp `sEQ` [C,E,G,As_Bb  				] = Just C9
                         | otherwise            	 			  = Nothing             -- Broken [SigPitch] deserves Nothing !!!
                         | sp `sEQ` [Cs_Db,F,Gs_Ab			] = Just Cs_DbMajor			-- Begin Cs_DbMajor
                         | sp `sEQ` [Cs_Db,E,Gs_Ab			] = Just Cs_DbMinor
@@ -229,19 +230,19 @@ toCanonicalSignature sp | sp `sEQ` [C,E,G     				] = Just CMajor         -- sor
                         | sp `sEQ` [E,Gs_Ab,B,Cs_Db			] = Just E6
                         | sp `sEQ` [E,G,B,Cs_Db				] = Just EMinor6
                         | sp `sEQ` [E,Fs_Gb,Gs_Ab,B,D			] = Just E9					--end E        
-                        | sp `sEQ` [F_Es,A,C				] = Just F_EsMajor          --Begin F_Es
-                        | sp `sEQ` [F_Es,Gs_Ab,C			] = Just F_EsMinor   
-                        | sp `sEQ` [F_Es,C					] = Just F_Es5
-                        | sp `sEQ` [F_Es,G,C,Ds_Eb			] = Just F_EsDominant7
-                        | sp `sEQ` [F_Es,A,C,E				] = Just F_EsMajor7
-                        | sp `sEQ` [F_Es,Gs_Ab,C,Ds_Eb			] = Just F_EsMinor7
-                        | sp `sEQ` [F_Es,Gs_Ab,C,E			] = Just F_EsMinorMajor7
-                        | sp `sEQ` [F_Es,As_Bb,C			] = Just F_EsSus4
-                        | sp `sEQ` [F_Es,G,C				] = Just F_EsSus2
-                        | sp `sEQ` [F_Es,A,C,D				] = Just F_Es6
-                        | sp `sEQ` [F_Es,Gs_Ab,C,D			] = Just F_EsMinor6
-                        | sp `sEQ` [F_Es,G,A,C,Ds_Eb			] = Just F_Es9				--end F_Es
-                        | sp `sEQ` [Fs_Gb,As_Bb,Ds_Db			] = Just Fs_GbMajor         --Begin Fs_Gb
+                        | sp `sEQ` [F,A,C				] = Just F_EsMajor          --Begin F_Es
+                        | sp `sEQ` [F,Gs_Ab,C			] = Just F_EsMinor   
+                        | sp `sEQ` [F,C					] = Just F_Es5
+                        | sp `sEQ` [F,G,C,Ds_Eb			] = Just F_EsDominant7
+                        | sp `sEQ` [F,A,C,E				] = Just F_EsMajor7
+                        | sp `sEQ` [F,Gs_Ab,C,Ds_Eb			] = Just F_EsMinor7
+                        | sp `sEQ` [F,Gs_Ab,C,E			] = Just F_EsMinorMajor7
+                        | sp `sEQ` [F,As_Bb,C			] = Just F_EsSus4
+                        | sp `sEQ` [F,G,C				] = Just F_EsSus2
+                        | sp `sEQ` [F,A,C,D				] = Just F_Es6
+                        | sp `sEQ` [F,Gs_Ab,C,D			] = Just F_EsMinor6
+                        | sp `sEQ` [F,G,A,C,Ds_Eb			] = Just F_Es9				--end F_Es
+                        | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db			] = Just Fs_GbMajor         --Begin Fs_Gb
                         | sp `sEQ` [Fs_Gb,A,Cs_Db			] = Just Fs_GbMinor   
                         | sp `sEQ` [Fs_Gb,Cs_Db				] = Just Fs_Gb5
                         | sp `sEQ` [Fs_Gb,Fs_Gb,As_Bb,E			] = Just Fs_GbDominant7
@@ -276,7 +277,7 @@ toCanonicalSignature sp | sp `sEQ` [C,E,G     				] = Just CMajor         -- sor
                         | sp `sEQ` [Gs_Ab,As_Bb,Ds_Eb			] = Just Gs_AbSus2
                         | sp `sEQ` [Gs_Ab,C,Ds_Eb,F			] = Just Gs_Ab6
                         | sp `sEQ` [Gs_Ab,B,Ds_Eb,F			] = Just Gs_AbMinor6
-                        | sp `sEQ` [Gs_Ab,As_Bb,C,Ds_Eb,Fs_Gb] = Just Gs_Ab9			--end Gs_Ab
+                        | sp `sEQ` [Gs_Ab,As_Bb,C,Ds_Eb,Fs_Gb		] = Just Gs_Ab9			--end Gs_Ab
                         | sp `sEQ` [A,Cs_Db,E				] = Just AMajor             --Begin A
                         | sp `sEQ` [A,C,E				] = Just AMinor   
                         | sp `sEQ` [A,E					] = Just A5
@@ -322,33 +323,33 @@ toCanonicalSignature sp | sp `sEQ` [C,E,G     				] = Just CMajor         -- sor
 
 fromCanonicalSignature :: CanonicalSignature -> [SigPitch]
 fromCanonicalSignature CMajor = C:E:G:[]     -- Same as [C,E,G]							—Begin C
-fromCanonicalSignature CMinor = C:Eb:G:[]    -- Same as [C,Eb,G]
+fromCanonicalSignature CMinor = C:Ds_Eb:G:[]    -- Same as [C,Eb,G]
 fromCanonicalSignature C5 = C:G:[]
-fromCanonicalSignature CDominant7 = C:E:G:As:[]
+fromCanonicalSignature CDominant7 = C:E:G:As_Bb:[]
 fromCanonicalSignature CMajor7 = C:E:G:B:[]
-fromCanonicalSignature CMinor7 = C:Eb:G:As:[]
-fromCanonicalSignature CMinorMajor7 = C:Eb:G:B:[]
+fromCanonicalSignature CMinor7 = C:Ds_Eb:G:As-Bb:[]
+fromCanonicalSignature CMinorMajor7 = C:Ds_Eb:G:B:[]
 fromCanonicalSignature CSus4 = C:F:G:[]
 fromCanonicalSignature CSus2 = C:D:G:[]
 fromCanonicalSignature C6 = C:E:G:A:[]
-fromCanonicalSignature CMinor6 = C:Eb:G:A:[]
-fromCanonicalSignature C9 = C:E:G:As:[]										—End C
+fromCanonicalSignature CMinor6 = C:Ds_Eb:G:A:[]
+fromCanonicalSignature C9 = C:E:G:As_Bb:[]										—End C
 														--BeginCs/Db
 
 fromCanonicalSignature Cs_DbMajor = Cs_Db:F:Gs_Ab:[]     -- 
 fromCanonicalSignature Cs_DbMinor = Cs_Db:E:Gs_Ab:[]  -- 
-fromCanonicalSignature Cs_Db5 =  Cs_Db:Gs_Ab:[]
+fromCanonicalSignature Cs_Db5 = Cs_Db:Gs_Ab:[]
 fromCanonicalSignature Cs_DbDominant7 = Cs_Db:F:Gs_Ab:B:[]
 fromCanonicalSignature Cs_DbMajor7 = Cs_Db:F:Gs_Ab:C:[]
 fromCanonicalSignature Cs_DbMinor7 = Cs_Db:E:Gs_Ab:B:[]
 fromCanonicalSignature Cs_DbMinorMajor7 = Cs_Db:E:Gs_Ab:C:[]
-fromCanonicalSignature Cs_DbSus4 = Cs_Db:Fs_Gb:Gs:Ab:[]
+fromCanonicalSignature Cs_DbSus4 = Cs_Db:Fs_Gb:Gs_Ab:[]
 fromCanonicalSignature Cs_DbSus2 = Cs_Db:Ds_Eb:Gs_Ab:[]
 fromCanonicalSignature Cs_Db6 = Cs_Db:F:Gs_Ab:As_Bb:[]
 fromCanonicalSignature Cs_DbMinor6 = Cs_Db:E:Gs_Ab:As_Bb:[]
 fromCanonicalSignature Cs_Db9 = Cs_Db:Ds_Eb:F:Gs_Ab:B:[]
 
-fromCanonicalSignature DMajor = D:Fs_Ab:A:[]     								—Begin D
+fromCanonicalSignature DMajor = D:Fs_Gb:A:[]     								—Begin D
 fromCanonicalSignature DMinor = D:F:A:[]  -- 
 fromCanonicalSignature D5 =  D:A:[]
 fromCanonicalSignature DDominant7 = D:Fs_Gb:A:C	:[]
@@ -388,20 +389,20 @@ fromCanonicalSignature EMinor6 = E:G:B:Cs_Db:[]
 fromCanonicalSignature E9 = E:Fs_Gb:Gs_Ab:B:D:[]									—End E
 
 
-fromCanonicalSignature F_EsMajor = F_Es:A:C:[]     								—Begin F_Es
-fromCanonicalSignature F_EsMinor = F_Es:Gs_Ab:C:[]  -- 
-fromCanonicalSignature F_Es5 =  F_Es:C:[]
-fromCanonicalSignature F_EsDominant7 = F_Es:G:C:Ds_Eb:[]
-fromCanonicalSignature F_EsMajor7 = F_Es:A:C:E:[]
-fromCanonicalSignature F_EsMinor7 = F_Es:Gs_Ab:C:Ds_Eb:[]
-fromCanonicalSignature F_EsMinorMajor7 = F_Es:Gs_Ab:C:E:[]
-fromCanonicalSignature F_EsSus4 = F_Es:As_Bb:C:[]
-fromCanonicalSignature F_EsSus2 = F_Es:G:C:[]
-fromCanonicalSignature F_Es6 = F_Es:A:C:D:[]
-fromCanonicalSignature F_EsMinor6 = F_Es:Gs_Ab:C:D:[]
-fromCanonicalSignature F_Es9 = F_Es:G:A:C:Ds_Eb:[]									—End F_Es
+fromCanonicalSignature F_EsMajor = F:A:C:[]     								—Begin F_Es
+fromCanonicalSignature F_EsMinor = F:Gs_Ab:C:[]  -- 
+fromCanonicalSignature F_Es5 =  F:C:[]
+fromCanonicalSignature F_EsDominant7 = F:G:C:Ds_Eb:[]
+fromCanonicalSignature F_EsMajor7 = F:A:C:E:[]
+fromCanonicalSignature F_EsMinor7 = F:Gs_Ab:C:Ds_Eb:[]
+fromCanonicalSignature F_EsMinorMajor7 = F:Gs_Ab:C:E:[]
+fromCanonicalSignature F_EsSus4 = F:As_Bb:C:[]
+fromCanonicalSignature F_EsSus2 = F:G:C:[]
+fromCanonicalSignature F_Es6 = F:A:C:D:[]
+fromCanonicalSignature F_EsMinor6 = F:Gs_Ab:C:D:[]
+fromCanonicalSignature F_Es9 = F:G:A:C:Ds_Eb:[]									—End F_Es
 
-fromCanonicalSignature Fs_GbMajor = Fs_Gb:As_Bb:Ds_Db:[]     								—Begin Fs_Gb
+fromCanonicalSignature Fs_GbMajor = Fs_Gb:As_Bb:Cs_Db:[]     								—Begin Fs_Gb
 fromCanonicalSignature Fs_GbMinor = Fs_Gb:A:Cs_Db:[]  -- 
 fromCanonicalSignature Fs_Gb5 =  Fs_Gb:Cs_Db:[]
 fromCanonicalSignature Fs_GbDominant7 = Fs_Gb:Fs_Gb:As_Bb:E:[]
