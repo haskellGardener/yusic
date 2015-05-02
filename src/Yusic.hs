@@ -36,10 +36,10 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_CSus4
               | KG_CSus2
               | KG_C6
-              | KG_CMinor
+              | KG_CMinor6
               | KG_C9                  -- End C
 
-              | KG_Cs_Db               -- Begin Cs/Db
+              | KG_Cs_DbMajor               -- Begin Cs/Db
               | KG_Cs_DbMinor
               | KG_Cs_Db5
               | KG_Cs_DbDominant7
@@ -49,7 +49,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_Cs_DbSus4
               | KG_Cs_DbSus2
               | KG_Cs_Db6
-              | KG_Cs_DbMinor
+              | KG_Cs_DbMinor6
               | KG_Cs_Db9              -- End Cs/Db
 
               | KG_DMajor              -- Begin D
@@ -62,7 +62,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_DSus4
               | KG_DSus2
               | KG_D6
-              | KG_DMinor
+              | KG_DMinor6
               | KG_D9                  -- End D
 
               | KG_Ds_EbMajor          -- Begin Ds/Eb
@@ -75,7 +75,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_Ds_EbSus4
               | KG_Ds_EbSus2
               | KG_Ds_Eb6
-              | KG_Ds_EbMinor
+              | KG_Ds_EbMinor6
               | KG_Ds_Eb9              -- End Ds/Eb
 
               | KG_EMajor              -- Begin E
@@ -88,7 +88,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_ESus4
               | KG_ESus2
               | KG_E6
-              | KG_EMinor
+              | KG_EMinor6
               | KG_E9                  -- End E
 
               | KG_F_EsMajor           -- Begin F/Es
@@ -101,8 +101,9 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_F_EsSus4
               | KG_F_EsSus2
               | KG_F_Es6
-              | KG_F_EsMinor
+              | KG_F_EsMinor6
               | KG_F_Es9               -- End F/Es
+
               | KG_Fs_GbMajor          -- Begin Fs/Gb
               | KG_Fs_GbMinor
               | KG_Fs_Gb5
@@ -113,7 +114,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_Fs_GbSus4
               | KG_Fs_GbSus2
               | KG_Fs_Gb6
-              | KG_Fs_GbMinor
+              | KG_Fs_GbMinor6
               | KG_Fs_Gb9              -- End Fs/Eb
 
               | KG_GMajor              -- Begin G
@@ -126,7 +127,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_GSus4
               | KG_GSus2
               | KG_G6
-              | KG_GMinor
+              | KG_GMinor6
               | KG_G9                  -- End G
 
               | KG_Gs_AbMajor          -- Begin Gs/Ab
@@ -139,7 +140,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_Gs_AbSus4
               | KG_Gs_AbSus2
               | KG_Gs_Ab6
-              | KG_Gs_AbMinor
+              | KG_Gs_AbMinor6
               | KG_Gs_Ab9              -- End Gs/Ab
 
               | KG_AMajor              -- Begin A
@@ -152,7 +153,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_ASus4
               | KG_ASus2
               | KG_A6
-              | KG_AMinor
+              | KG_AMinor6
               | KG_A9                  -- End A
 
               | KG_As_BbMajor          -- Begin As/Bb
@@ -165,7 +166,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_As_BbSus4
               | KG_As_BbSus2
               | KG_As_Bb6
-              | KG_As_BbMinor
+              | KG_As_BbMinor6
               | KG_As_Bb9              -- End As/Bb
 
               | KG_B_CbMajor           -- Begin B/Cb
@@ -178,7 +179,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_B_CbSus4
               | KG_B_CbSus2
               | KG_B_Cb6
-              | KG_B_CbMinor
+              | KG_B_CbMinor6
               | KG_B_Cb9               -- End B/Cb
                 deriving (Show)
 
@@ -336,7 +337,7 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
                         | sp `sEQ` [B,D,Fs_Gb,As_Bb           ] = Just KG_B_CbMinorMajor7
                         | sp `sEQ` [B,E,Fs_Gb                 ] = Just KG_B_CbSus4
                         | sp `sEQ` [B,Cs_Db,Fs_Gb             ] = Just KG_B_CbSus2
-                        | sp `sEQ` [B,Ds_Eb,Fs_Gb,GS_Ab       ] = Just KG_B_Cb6
+                        | sp `sEQ` [B,Ds_Eb,Fs_Gb,Gs_Ab       ] = Just KG_B_Cb6
                         | sp `sEQ` [B,D,Fs_Gb,Gs_Ab           ] = Just KG_B_CbMinor6
                         | sp `sEQ` [B,Cs_Db,Ds_Eb,Fs_Gb,A     ] = Just KG_B_Cb9             -- end B_Cb
                         | otherwise                             = Nothing                -- Broken [SigPitch] deserves Nothing !!!
@@ -498,6 +499,6 @@ fromKeyGuide KG_B_CbMinor7       = B:D:Fs_Gb:A               :[]
 fromKeyGuide KG_B_CbMinorMajor7  = B:D:Fs_Gb:As_Bb           :[]
 fromKeyGuide KG_B_CbSus4         = B:E:Fs_Gb                 :[]
 fromKeyGuide KG_B_CbSus2         = B:Cs_Db:Fs_Gb             :[]
-fromKeyGuide KG_B_Cb6            = B:Ds_Eb:Fs_Gb:GS_Ab       :[]
+fromKeyGuide KG_B_Cb6            = B:Ds_Eb:Fs_Gb:Gs_Ab       :[]
 fromKeyGuide KG_B_CbMinor6       = B:D:Fs_Gb:Gs_Ab           :[]
 fromKeyGuide KG_B_Cb9            = B:Cs_Db:Ds_Eb:Fs_Gb:A     :[] -- End B_Cb
