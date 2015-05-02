@@ -9,110 +9,16 @@ import Data.List
 yusic :: T.Text
 yusic = "Well Hello Dolly"
 
-
---Super All Note = [A0,As0_Bb0,C1,Cs1_Db1,D1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1,C2,Cs2_Db2,D2,Ds2_Eb2,E2,F2,Fs2_Gb2,G,Gs2_Ab2,A2,As2_Bb2,B2,C3,Cs3_Db3,D3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3,C4,Cs4_Db4,D4,Ds4_Eb4,E4,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4,C5,Cs5_Db5,D5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5,C6,Cs6_Db6,D6,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6,C7,Cs7_Db7,D7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7,C8]
---Super Midi Note = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108]
-
-listNum :: [] Int
-listNum = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108]
-
-listNotes :: [] Note
-listNotes = [A0,As0_Bb0,B0,C1,Cs1_Db1,D1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1,C2,Cs2_Db2,D2,Ds2_Eb2,E2,F2,Fs2_Gb2
-            ,G2,Gs2_Ab2,A2,As2_Bb2,B2,C3,Cs3_Db3,D3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3,C4,Cs4_Db4,D4,Ds4_Eb4,E4
-            ,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4,C5,Cs5_Db5,D5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5,C6,Cs6_Db6,D6
-            ,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6,C7,Cs7_Db7,D7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7,C8]
-
-
-data Note = A0
-           | As0_Bb0
-           | B0
-           | C1
-           | Cs1_Db1
-           | D1
-           | Ds1_Eb1
-           | E1
-           | F1
-           | Fs1_Gb1
-           | G1
-           | Gs1_Ab1
-           | A1
-           | As1_Bb1
-           | B1
-           | C2
-           | Cs2_Db2
-           | D2
-           | Ds2_Eb2
-           | E2
-           | F2
-           | Fs2_Gb2
-           | G2
-           | Gs2_Ab2
-           | A2
-           | As2_Bb2
-           | B2
-           | C3
-           | Cs3_Db3
-           | D3
-           | Ds3_Eb3
-           | E3
-           | F3
-           | Fs3_Gb3
-           | G3
-           | Gs3_Ab3
-           | A3
-           | As3_Bb3
-           | B3
-           | C4
-           | Cs4_Db4
-           | D4
-           | Ds4_Eb4
-           | E4
-           | F4
-           | Fs4_Gb4
-           | G4
-           | Gs4_Ab4
-           | A4
-           | As4_Bb4
-           | B4
-           | C5
-           | Cs5_Db5
-           | D5
-           | Ds5_Eb5
-           | E5
-           | F5
-           | Fs5_Gb5
-           | G5
-           | Gs5_Ab5
-           | A5
-           | As5_Bb5
-           | B5
-           | C6
-           | Cs6_Db6
-           | D6
-           | Ds6_Eb6
-           | E6
-           | F6
-           | Fs6_Gb6
-           | G6
-           | Gs6_Ab6
-           | A6
-           | As6_Bb6
-           | B6
-           | C7
-           | Cs7_Db7
-           | D7
-           | Ds7_Eb7
-           | E7
-           | F7
-           | Fs7_Gb7
-           | G7
-           | Gs7_Ab7
-           | A7
-           | As7_Bb7
-           | B7
-           | C8
-             deriving (Show, Eq, Ord, Enum)
-
+data Note =                                                                  A0 | As_Bb_0 | B0
+          | C1 | Cs_Db_1 | D1 | Ds_Eb_1 | E1 | F1 | Fs_Gb_1 | G1 | Gs_Ab_1 | A1 | As_Bb_1 | B1
+          | C2 | Cs_Db_2 | D2 | Ds_Eb_2 | E2 | F2 | Fs_Gb_2 | G2 | Gs_Ab_2 | A2 | As_Bb_2 | B2
+          | C3 | Cs_Db_3 | D3 | Ds_Eb_3 | E3 | F3 | Fs_Gb_3 | G3 | Gs_Ab_3 | A3 | As_Bb_3 | B3
+          | C4 | Cs_Db_4 | D4 | Ds_Eb_4 | E4 | F4 | Fs_Gb_4 | G4 | Gs_Ab_4 | A4 | As_Bb_4 | B4
+          | C5 | Cs_Db_5 | D5 | Ds_Eb_5 | E5 | F5 | Fs_Gb_5 | G5 | Gs_Ab_5 | A5 | As_Bb_5 | B5
+          | C6 | Cs_Db_6 | D6 | Ds_Eb_6 | E6 | F6 | Fs_Gb_6 | G6 | Gs_Ab_6 | A6 | As_Bb_6 | B6
+          | C7 | Cs_Db_7 | D7 | Ds_Eb_7 | E7 | F7 | Fs_Gb_7 | G7 | Gs_Ab_7 | A7 | As_Bb_7 | B7
+          | C8
+            deriving (Show, Eq, Ord, Enum)
 
 data SigPitch = C
      	      | Cs_Db
@@ -126,9 +32,7 @@ data SigPitch = C
               | A
 	      | As_Bb
               | B
-                deriving (Show, Ord, Eq) -- You can now perform math ops on SigPitch (e.g. (As < B), (C /= D), (G == G), etc.)
-                                         -- Which means you can  sort [E, G, C] = [C,E,G] (same as C:E:G:[]) inside toCanonicalSignature
-                                         -- and order is correct.
+                deriving (Show, Ord, Eq)
 
 data KeyGuide = KG_CMajor              -- Begin C
               | KG_CMinor
@@ -609,209 +513,209 @@ fromKeyGuide KG_B_Cb9            = B:Cs_Db:Ds_Eb:Fs_Gb:A     :[] -- End B_Cb
 
 toMidi :: Note -> Int
 toMidi A0      = 21
-toMidi As0_Bb0 = 22
+toMidi As_Bb_0 = 22
 toMidi B0      = 23
 toMidi C1      = 24
-toMidi Cs1_Db1 = 25
+toMidi Cs_Db_1 = 25
 toMidi D1      = 26
-toMidi Ds1_Eb1 = 27
+toMidi Ds_Eb_1 = 27
 toMidi E1      = 28
 toMidi F1      = 29
-toMidi Fs1_Gb1 = 30
+toMidi Fs_Gb_1 = 30
 toMidi G1      = 31
-toMidi Gs1_Ab1 = 32
+toMidi Gs_Ab_1 = 32
 toMidi A1      = 33
-toMidi As1_Bb1 = 34
+toMidi As_Bb_1 = 34
 toMidi B1      = 35
 toMidi C2      = 36
-toMidi Cs2_Db2 = 37
+toMidi Cs_Db_2 = 37
 toMidi D2      = 38
-toMidi Ds2_Eb2 = 39
+toMidi Ds_Eb_2 = 39
 toMidi E2      = 40
 toMidi F2      = 41
-toMidi Fs2_Gb2 = 42
+toMidi Fs_Gb_2 = 42
 toMidi G2      = 43
-toMidi Gs2_Ab2 = 44
+toMidi Gs_Ab_2 = 44
 toMidi A2      = 45
-toMidi As2_Bb2 = 46
+toMidi As_Bb_2 = 46
 toMidi B2      = 47
 toMidi C3      = 48
-toMidi Cs3_Db3 = 49
+toMidi Cs_Db_3 = 49
 toMidi D3      = 50
-toMidi Ds3_Eb3 = 51
+toMidi Ds_Eb_3 = 51
 toMidi E3      = 52
 toMidi F3      = 53
-toMidi Fs3_Gb3 = 54
+toMidi Fs_Gb_3 = 54
 toMidi G3      = 55
-toMidi Gs3_Ab3 = 56
+toMidi Gs_Ab_3 = 56
 toMidi A3      = 57
-toMidi As3_Bb3 = 58
+toMidi As_Bb_3 = 58
 toMidi B3      = 59
 toMidi C4      = 60
-toMidi Cs4_Db4 = 61
+toMidi Cs_Db_4 = 61
 toMidi D4      = 62
-toMidi Ds4_Eb4 = 63
+toMidi Ds_Eb_4 = 63
 toMidi E4      = 64
 toMidi F4      = 65
-toMidi Fs4_Gb4 = 66
+toMidi Fs_Gb_4 = 66
 toMidi G4      = 67
-toMidi Gs4_Ab4 = 68
+toMidi Gs_Ab_4 = 68
 toMidi A4      = 69
-toMidi As4_Bb4 = 70
+toMidi As_Bb_4 = 70
 toMidi B4      = 71
 toMidi C5      = 72
-toMidi Cs5_Db5 = 73
+toMidi Cs_Db_5 = 73
 toMidi D5      = 74
-toMidi Ds5_Eb5 = 75
+toMidi Ds_Eb_5 = 75
 toMidi E5      = 76
 toMidi F5      = 77
-toMidi Fs5_Gb5 = 78
+toMidi Fs_Gb_5 = 78
 toMidi G5      = 79
-toMidi Gs5_Ab5 = 80
+toMidi Gs_Ab_5 = 80
 toMidi A5      = 81
-toMidi As5_Bb5 = 82
+toMidi As_Bb_5 = 82
 toMidi B5      = 83
 toMidi C6      = 84
-toMidi Cs6_Db6 = 85
+toMidi Cs_Db_6 = 85
 toMidi D6      = 86
-toMidi Ds6_Eb6 = 87
+toMidi Ds_Eb_6 = 87
 toMidi E6      = 88
 toMidi F6      = 89
-toMidi Fs6_Gb6 = 90
+toMidi Fs_Gb_6 = 90
 toMidi G6      = 91
-toMidi Gs6_Ab6 = 92
+toMidi Gs_Ab_6 = 92
 toMidi A6      = 93
-toMidi As6_Bb6 = 94
+toMidi As_Bb_6 = 94
 toMidi B6      = 95
 toMidi C7      = 96
-toMidi Cs7_Db7 = 97
+toMidi Cs_Db_7 = 97
 toMidi D7      = 98
-toMidi Ds7_Eb7 = 99
+toMidi Ds_Eb_7 = 99
 toMidi E7      = 100
 toMidi F7      = 101
-toMidi Fs7_Gb7 = 102
+toMidi Fs_Gb_7 = 102
 toMidi G7      = 103
-toMidi Gs7_Ab7 = 104
+toMidi Gs_Ab_7 = 104
 toMidi A7      = 105
-toMidi As7_Bb7 = 106
+toMidi As_Bb_7 = 106
 toMidi B7      = 107
 toMidi C8      = 108
 
 fromMidi :: Int -> Maybe Note
 fromMidi 21  = Just A0
-fromMidi 22  = Just As0_Bb0
+fromMidi 22  = Just As_Bb_0
 fromMidi 23  = Just B0
 fromMidi 24  = Just C1
-fromMidi 25  = Just Cs1_Db1
+fromMidi 25  = Just Cs_Db_1
 fromMidi 26  = Just D1
-fromMidi 27  = Just Ds1_Eb1
+fromMidi 27  = Just Ds_Eb_1
 fromMidi 28  = Just E1
 fromMidi 29  = Just F1
-fromMidi 30  = Just Fs1_Gb1
+fromMidi 30  = Just Fs_Gb_1
 fromMidi 31  = Just G1
-fromMidi 32  = Just Gs1_Ab1
+fromMidi 32  = Just Gs_Ab_1
 fromMidi 33  = Just A1
-fromMidi 34  = Just As1_Bb1
+fromMidi 34  = Just As_Bb_1
 fromMidi 35  = Just B1
 fromMidi 36  = Just C2
-fromMidi 37  = Just Cs2_Db2
+fromMidi 37  = Just Cs_Db_2
 fromMidi 38  = Just D2
-fromMidi 39  = Just Ds2_Eb2
+fromMidi 39  = Just Ds_Eb_2
 fromMidi 40  = Just E2
 fromMidi 41  = Just F2
-fromMidi 42  = Just Fs2_Gb2
+fromMidi 42  = Just Fs_Gb_2
 fromMidi 43  = Just G2
-fromMidi 44  = Just Gs2_Ab2
+fromMidi 44  = Just Gs_Ab_2
 fromMidi 45  = Just A2
-fromMidi 46  = Just As2_Bb2
+fromMidi 46  = Just As_Bb_2
 fromMidi 47  = Just B2
 fromMidi 48  = Just C3
-fromMidi 49  = Just Cs3_Db3
+fromMidi 49  = Just Cs_Db_3
 fromMidi 50  = Just D3
-fromMidi 51  = Just Ds3_Eb3
+fromMidi 51  = Just Ds_Eb_3
 fromMidi 52  = Just E3
 fromMidi 53  = Just F3
-fromMidi 54  = Just Fs3_Gb3
+fromMidi 54  = Just Fs_Gb_3
 fromMidi 55  = Just G3
-fromMidi 56  = Just Gs3_Ab3
+fromMidi 56  = Just Gs_Ab_3
 fromMidi 57  = Just A3
-fromMidi 58  = Just As3_Bb3
+fromMidi 58  = Just As_Bb_3
 fromMidi 59  = Just B3
 fromMidi 60  = Just C4
-fromMidi 61  = Just Cs4_Db4
+fromMidi 61  = Just Cs_Db_4
 fromMidi 62  = Just D4
-fromMidi 63  = Just Ds4_Eb4
+fromMidi 63  = Just Ds_Eb_4
 fromMidi 64  = Just E4
 fromMidi 65  = Just F4
-fromMidi 66  = Just Fs4_Gb4
+fromMidi 66  = Just Fs_Gb_4
 fromMidi 67  = Just G4
-fromMidi 68  = Just Gs4_Ab4
+fromMidi 68  = Just Gs_Ab_4
 fromMidi 69  = Just A4
-fromMidi 70  = Just As4_Bb4
+fromMidi 70  = Just As_Bb_4
 fromMidi 71  = Just B4
 fromMidi 72  = Just C5
-fromMidi 73  = Just Cs5_Db5
+fromMidi 73  = Just Cs_Db_5
 fromMidi 74  = Just D5
-fromMidi 75  = Just Ds5_Eb5
+fromMidi 75  = Just Ds_Eb_5
 fromMidi 76  = Just E5
 fromMidi 77  = Just F5
-fromMidi 78  = Just Fs5_Gb5
+fromMidi 78  = Just Fs_Gb_5
 fromMidi 79  = Just G5
-fromMidi 80  = Just Gs5_Ab5
+fromMidi 80  = Just Gs_Ab_5
 fromMidi 81  = Just A5
-fromMidi 82  = Just As5_Bb5
+fromMidi 82  = Just As_Bb_5
 fromMidi 83  = Just B5
 fromMidi 84  = Just C6
-fromMidi 85  = Just Cs6_Db6
+fromMidi 85  = Just Cs_Db_6
 fromMidi 86  = Just D6
-fromMidi 87  = Just Ds6_Eb6
+fromMidi 87  = Just Ds_Eb_6
 fromMidi 88  = Just E6
 fromMidi 89  = Just F6
-fromMidi 90  = Just Fs6_Gb6
+fromMidi 90  = Just Fs_Gb_6
 fromMidi 91  = Just G6
-fromMidi 92  = Just Gs6_Ab6
+fromMidi 92  = Just Gs_Ab_6
 fromMidi 93  = Just A6
-fromMidi 94  = Just As6_Bb6
+fromMidi 94  = Just As_Bb_6
 fromMidi 95  = Just B6
 fromMidi 96  = Just C7
-fromMidi 97  = Just Cs7_Db7
+fromMidi 97  = Just Cs_Db_7
 fromMidi 98  = Just D7
-fromMidi 99  = Just Ds7_Eb7
+fromMidi 99  = Just Ds_Eb_7
 fromMidi 100 = Just E7
 fromMidi 101 = Just F7
-fromMidi 102 = Just Fs7_Gb7
+fromMidi 102 = Just Fs_Gb_7
 fromMidi 103 = Just G7
-fromMidi 104 = Just Gs7_Ab7
+fromMidi 104 = Just Gs_Ab_7
 fromMidi 105 = Just A7
-fromMidi 106 = Just As7_Bb7
+fromMidi 106 = Just As_Bb_7
 fromMidi 107 = Just B7
 fromMidi 108 = Just C8
 fromMidi _   = Nothing
 
 toNotesBySigPitch :: SigPitch -> [] Note
-toNotesBySigPitch A     = [A0,A1,A2,A3,A4,A5,A6,A7]
-toNotesBySigPitch As_Bb = [As0_Bb0,As1_Bb1,As2_Bb2,As3_Bb3,As4_Bb4,As5_Bb5,As6_Bb6,As7_Bb7]
-toNotesBySigPitch B     = [B0,B1,B2,B3,B4,B5,B6,B7]
-toNotesBySigPitch C     = [C1,C2,C3,C4,C5,C6,C7,C8]
-toNotesBySigPitch Cs_Db = [Cs1_Db1,Cs2_Db2,Cs3_Db3,Cs4_Db4,Cs5_Db5,Cs6_Db6,Cs7_Db7]
-toNotesBySigPitch D     = [D1,D2,D3,D4,D5,D6,D7]
-toNotesBySigPitch Ds_Eb = [Ds1_Eb1,Ds2_Eb2,Ds3_Eb3,Ds4_Eb4,Ds5_Eb5,Ds6_Eb6,Ds7_Eb7]
-toNotesBySigPitch E     = [E1,E2,E3,E4,E5,E6,E7]
-toNotesBySigPitch F     = [F1,F2,F3,F4,F5,F6,F7]
-toNotesBySigPitch Fs_Gb = [Fs1_Gb1,Fs2_Gb2,Fs3_Gb3,Fs4_Gb4,Fs5_Gb5,Fs6_Gb6,Fs7_Gb7]
-toNotesBySigPitch G     = [G1,G2,G3,G4,G5,G6,G7]
-toNotesBySigPitch Gs_Ab = [Gs1_Ab1,Gs2_Ab2,Gs3_Ab3,Gs4_Ab4,Gs5_Ab5,Gs6_Ab6,Gs7_Ab7]
+toNotesBySigPitch A     = A0:A1:A2:A3:A4:A5:A6:A7                                         :[]
+toNotesBySigPitch As_Bb = As_Bb_0:As_Bb_1:As_Bb_2:As_Bb_3:As_Bb_4:As_Bb_5:As_Bb_6:As_Bb_7 :[]
+toNotesBySigPitch B     = B0:B1:B2:B3:B4:B5:B6:B7                                         :[]
+toNotesBySigPitch C     = C1:C2:C3:C4:C5:C6:C7:C8                                         :[]
+toNotesBySigPitch Cs_Db = Cs_Db_1:Cs_Db_2:Cs_Db_3:Cs_Db_4:Cs_Db_5:Cs_Db_6:Cs_Db_7         :[]
+toNotesBySigPitch D     = D1:D2:D3:D4:D5:D6:D7                                            :[]
+toNotesBySigPitch Ds_Eb = Ds_Eb_1:Ds_Eb_2:Ds_Eb_3:Ds_Eb_4:Ds_Eb_5:Ds_Eb_6:Ds_Eb_7         :[]
+toNotesBySigPitch E     = E1:E2:E3:E4:E5:E6:E7                                            :[]
+toNotesBySigPitch F     = F1:F2:F3:F4:F5:F6:F7                                            :[]
+toNotesBySigPitch Fs_Gb = Fs_Gb_1:Fs_Gb_2:Fs_Gb_3:Fs_Gb_4:Fs_Gb_5:Fs_Gb_6:Fs_Gb_7         :[]
+toNotesBySigPitch G     = G1:G2:G3:G4:G5:G6:G7                                            :[]
+toNotesBySigPitch Gs_Ab = Gs_Ab_1:Gs_Ab_2:Gs_Ab_3:Gs_Ab_4:Gs_Ab_5:Gs_Ab_6:Gs_Ab_7         :[]
 
 fromOctave :: Int -> [] Note
-fromOctave 0 = [A0,As0_Bb0,B0]
-fromOctave 1 = [C1,Cs1_Db1,D1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1]
-fromOctave 2 = [C2,Cs2_Db2,D2,Ds2_Eb2,E2,F2,Fs2_Gb2,G2,Gs2_Ab2,A2,As2_Bb2,B2]
-fromOctave 3 = [C3,Cs3_Db3,D3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3]
-fromOctave 4 = [C4,Cs4_Db4,D4,Ds4_Eb4,E4,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4]
-fromOctave 5 = [C5,Cs5_Db5,D5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5]
-fromOctave 6 = [C6,Cs6_Db6,D6,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6]
-fromOctave 7 = [C7,Cs7_Db7,D7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7]
-fromOctave 8 = [C8]
+fromOctave 0 = A0:As_Bb_0:B0                                                :[]
+fromOctave 1 = C1:Cs_Db_1:D1:Ds_Eb_1:E1:F1:Fs_Gb_1:G1:Gs_Ab_1:A1:As_Bb_1:B1 :[]
+fromOctave 2 = C2:Cs_Db_2:D2:Ds_Eb_2:E2:F2:Fs_Gb_2:G2:Gs_Ab_2:A2:As_Bb_2:B2 :[]
+fromOctave 3 = C3:Cs_Db_3:D3:Ds_Eb_3:E3:F3:Fs_Gb_3:G3:Gs_Ab_3:A3:As_Bb_3:B3 :[]
+fromOctave 4 = C4:Cs_Db_4:D4:Ds_Eb_4:E4:F4:Fs_Gb_4:G4:Gs_Ab_4:A4:As_Bb_4:B4 :[]
+fromOctave 5 = C5:Cs_Db_5:D5:Ds_Eb_5:E5:F5:Fs_Gb_5:G5:Gs_Ab_5:A5:As_Bb_5:B5 :[]
+fromOctave 6 = C6:Cs_Db_6:D6:Ds_Eb_6:E6:F6:Fs_Gb_6:G6:Gs_Ab_6:A6:As_Bb_6:B6 :[]
+fromOctave 7 = C7:Cs_Db_7:D7:Ds_Eb_7:E7:F7:Fs_Gb_7:G7:Gs_Ab_7:A7:As_Bb_7:B7 :[]
+fromOctave 8 = C8                                                           :[]
 fromOctave _ = []
 
 toNoteBySigOctave :: SigPitch -> Int -> Maybe Note
@@ -825,91 +729,91 @@ toNoteBySigOctave sp n = if null intersection
 
 toOctave :: Note -> Int
 toOctave A0      = 0
-toOctave As0_Bb0 = 0
+toOctave As_Bb_0 = 0
 toOctave B0      = 0
 toOctave C1      = 1
-toOctave Cs1_Db1 = 1
+toOctave Cs_Db_1 = 1
 toOctave D1      = 1
-toOctave Ds1_Eb1 = 1
+toOctave Ds_Eb_1 = 1
 toOctave E1      = 1
 toOctave F1      = 1
-toOctave Fs1_Gb1 = 1
+toOctave Fs_Gb_1 = 1
 toOctave G1      = 1
-toOctave Gs1_Ab1 = 1
+toOctave Gs_Ab_1 = 1
 toOctave A1      = 1
-toOctave As1_Bb1 = 1
+toOctave As_Bb_1 = 1
 toOctave B1      = 1
 toOctave C2      = 2
-toOctave Cs2_Db2 = 2
+toOctave Cs_Db_2 = 2
 toOctave D2      = 2
-toOctave Ds2_Eb2 = 2
+toOctave Ds_Eb_2 = 2
 toOctave E2      = 2
 toOctave F2      = 2
-toOctave Fs2_Gb2 = 2
+toOctave Fs_Gb_2 = 2
 toOctave G2      = 2
-toOctave Gs2_Ab2 = 2
+toOctave Gs_Ab_2 = 2
 toOctave A2      = 2
-toOctave As2_Bb2 = 2
+toOctave As_Bb_2 = 2
 toOctave B2      = 2
 toOctave C3      = 3
-toOctave Cs3_Db3 = 3
+toOctave Cs_Db_3 = 3
 toOctave D3      = 3
-toOctave Ds3_Eb3 = 3
+toOctave Ds_Eb_3 = 3
 toOctave E3      = 3
 toOctave F3      = 3
-toOctave Fs3_Gb3 = 3
+toOctave Fs_Gb_3 = 3
 toOctave G3      = 3
-toOctave Gs3_Ab3 = 3
+toOctave Gs_Ab_3 = 3
 toOctave A3      = 3
-toOctave As3_Bb3 = 3
+toOctave As_Bb_3 = 3
 toOctave B3      = 3
 toOctave C4      = 4
-toOctave Cs4_Db4 = 4
+toOctave Cs_Db_4 = 4
 toOctave D4      = 4
-toOctave Ds4_Eb4 = 4
+toOctave Ds_Eb_4 = 4
 toOctave E4      = 4
 toOctave F4      = 4
-toOctave Fs4_Gb4 = 4
+toOctave Fs_Gb_4 = 4
 toOctave G4      = 4
-toOctave Gs4_Ab4 = 4
+toOctave Gs_Ab_4 = 4
 toOctave A4      = 4
-toOctave As4_Bb4 = 4
+toOctave As_Bb_4 = 4
 toOctave B4      = 4
 toOctave C5      = 5
-toOctave Cs5_Db5 = 5
+toOctave Cs_Db_5 = 5
 toOctave D5      = 5
-toOctave Ds5_Eb5 = 5
+toOctave Ds_Eb_5 = 5
 toOctave E5      = 5
 toOctave F5      = 5
-toOctave Fs5_Gb5 = 5
+toOctave Fs_Gb_5 = 5
 toOctave G5      = 5
-toOctave Gs5_Ab5 = 5
+toOctave Gs_Ab_5 = 5
 toOctave A5      = 5
-toOctave As5_Bb5 = 5
+toOctave As_Bb_5 = 5
 toOctave B5      = 5
 toOctave C6      = 6
-toOctave Cs6_Db6 = 6
+toOctave Cs_Db_6 = 6
 toOctave D6      = 6
-toOctave Ds6_Eb6 = 6
+toOctave Ds_Eb_6 = 6
 toOctave E6      = 6
 toOctave F6      = 6
-toOctave Fs6_Gb6 = 6
+toOctave Fs_Gb_6 = 6
 toOctave G6      = 6
-toOctave Gs6_Ab6 = 6
+toOctave Gs_Ab_6 = 6
 toOctave A6      = 6
-toOctave As6_Bb6 = 6
+toOctave As_Bb_6 = 6
 toOctave B6      = 6
 toOctave C7      = 7
-toOctave Cs7_Db7 = 7
+toOctave Cs_Db_7 = 7
 toOctave D7      = 7
-toOctave Ds7_Eb7 = 7
+toOctave Ds_Eb_7 = 7
 toOctave E7      = 7
 toOctave F7      = 7
-toOctave Fs7_Gb7 = 7
+toOctave Fs_Gb_7 = 7
 toOctave G7      = 7
-toOctave Gs7_Ab7 = 7
+toOctave Gs_Ab_7 = 7
 toOctave A7      = 7
-toOctave As7_Bb7 = 7
+toOctave As_Bb_7 = 7
 toOctave B7      = 7
 toOctave C8      = 8
 
