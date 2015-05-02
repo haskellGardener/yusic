@@ -7,21 +7,26 @@ Super Midi Notes = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
 
 
 data SigPitch = C
+     	      | Cs_Db
               | D
+	      | Ds_Eb
               | E
               | F
+	      | Fs_Gb
               | G
+	      | Gs_Ab
               | A
+	      | As_Bb
               | B
 
-data SigPitch - Cs_Db
-	      |
+
                 deriving (Show, Ord, Eq) -- You can now perform math ops on SigPitch (e.g. (As < B), (C /= D), (G == G), etc.)
                                          -- Which means you can  sort [E, G, C] = [C,E,G] (same as C:E:G:[]) inside toCanonicalSignature
                                          -- and order is correct.
 
 
-data CanonicalSignature = CMajor  --Begin C
+
+data KeyGuide = CMajor  --Begin C
                         | CMinor
                         | C5
                         | CDominant7
