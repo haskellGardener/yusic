@@ -120,3 +120,12 @@ cabal test
 #                                                                    Command Group 4 END
 ########################################################################################
 
+
+
+
+# Here are some rinse and repeat git commands for updating stuff
+
+git add $PROJDIR
+git commit -m "Commentary/Narrative Goes Here."
+
+git push origin master  # send it to github or wherever.
