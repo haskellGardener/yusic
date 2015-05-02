@@ -10,6 +10,184 @@ yusic :: T.Text
 yusic = "Well Hello Dolly"
 
 
+--Super All Notes = [A0,As0_Bb0,C1,Cs1_Db1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1,C2,Cs2_Db2,Ds2_Eb2,E2,F2,Fs2_Gb2,G,Gs2_Ab2,A2,As2_Bb2,B2,C3,Cs3_Db3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3,C4,Cs4_Db4,Ds4_Eb4,E4,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4,C5,Cs5_Db5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5,C6,Cs6_Db6,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6,C7,Cs7_Db7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7,C8]
+--Super Midi Notes = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108]
+
+listNum :: [] Int
+listNum = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108]
+
+listNotes :: [] Notes
+listNotes = [A0,As0_Bb0,C1,Cs1_Db1,Ds1_Eb1,E1,F1,Fs1_Gb1,G1,Gs1_Ab1,A1,As1_Bb1,B1,C2,Cs2_Db2,Ds2_Eb2,E2,F2,Fs2_Gb2,G2,Gs2_Ab2,A2,As2_Bb2,B2,C3,Cs3_Db3,Ds3_Eb3,E3,F3,Fs3_Gb3,G3,Gs3_Ab3,A3,As3_Bb3,B3,C4,Cs4_Db4,Ds4_Eb4,E4,F4,Fs4_Gb4,G4,Gs4_Ab4,A4,As4_Bb4,B4,C5,Cs5_Db5,Ds5_Eb5,E5,F5,Fs5_Gb5,G5,Gs5_Ab5,A5,As5_Bb5,B5,C6,Cs6_Db6,Ds6_Eb6,E6,F6,Fs6_Gb6,G6,Gs6_Ab6,A6,As6_Bb6,B6,C7,Cs7_Db7,Ds7_Eb7,E7,F7,Fs7_Gb7,G7,Gs7_Ab7,A7,As7_Bb7,B7,C8]
+
+
+data Notes = A0
+           | As0_Bb0
+           | C1
+           | Cs1_Db1
+           | Ds1_Eb1
+           | E1
+           | F1
+           | Fs1_Gb1
+           | G1
+           | Gs1_Ab1
+           | A1
+           | As1_Bb1
+           | B1
+           | C2
+           | Cs2_Db2
+           | Ds2_Eb2
+           | E2
+           | F2
+           | Fs2_Gb2
+           | G2
+           | Gs2_Ab2
+           | A2
+           | As2_Bb2
+           | B2
+           | C3
+           | Cs3_Db3
+           | Ds3_Eb3
+           | E3
+           | F3
+           | Fs3_Gb3
+           | G3
+           | Gs3_Ab3
+           | A3
+           | As3_Bb3
+           | B3
+           | C4
+           | Cs4_Db4
+           | Ds4_Eb4
+           | E4
+           | F4
+           | Fs4_Gb4
+           | G4
+           | Gs4_Ab4
+           | A4
+           | As4_Bb4
+           | B4
+           | C5
+           | Cs5_Db5
+           | Ds5_Eb5
+           | E5
+           | F5
+           | Fs5_Gb5
+           | G5
+           | Gs5_Ab5
+           | A5
+           | As5_Bb5
+           | B5
+           | C6
+           | Cs6_Db6
+           | Ds6_Eb6
+           | E6
+           | F6
+           | Fs6_Gb6
+           | G6
+           | Gs6_Ab6
+           | A6
+           | As6_Bb6
+           | B6
+           | C7
+           | Cs7_Db7
+           | Ds7_Eb7
+           | E7
+           | F7
+           | Fs7_Gb7
+           | G7
+           | Gs7_Ab7
+           | A7
+           | As7_Bb7
+           | B7
+           | C8
+             deriving (Show, Eq, Ord, Enum)
+
+toOctave :: Notes -> Int
+toOctave A0      = 0
+toOctave As0_Bb0 = 0
+toOctave C1      = 1
+toOctave Cs1_Db1 = 1
+toOctave Ds1_Eb1 = 1
+toOctave E1      = 1
+toOctave F1      = 1
+toOctave Fs1_Gb1 = 1
+toOctave G1      = 1
+toOctave Gs1_Ab1 = 1
+toOctave A1      = 1
+toOctave As1_Bb1 = 1
+toOctave B1      = 1
+toOctave C2      = 2
+toOctave Cs2_Db2 = 2
+toOctave Ds2_Eb2 = 2
+toOctave E2      = 2
+toOctave F2      = 2
+toOctave Fs2_Gb2 = 2
+toOctave G2      = 2
+toOctave Gs2_Ab2 = 2
+toOctave A2      = 2
+toOctave As2_Bb2 = 2
+toOctave B2      = 2
+toOctave C3      = 3
+toOctave Cs3_Db3 = 3
+toOctave Ds3_Eb3 = 3
+toOctave E3      = 3
+toOctave F3      = 3
+toOctave Fs3_Gb3 = 3
+toOctave G3      = 3
+toOctave Gs3_Ab3 = 3
+toOctave A3      = 3
+toOctave As3_Bb3 = 3
+toOctave B3      = 3
+toOctave C4      = 4
+toOctave Cs4_Db4 = 4
+toOctave Ds4_Eb4 = 4
+toOctave E4      = 4
+toOctave F4      = 4
+toOctave Fs4_Gb4 = 4
+toOctave G4      = 4
+toOctave Gs4_Ab4 = 4
+toOctave A4      = 4
+toOctave As4_Bb4 = 4
+toOctave B4      = 4
+toOctave C5      = 5
+toOctave Cs5_Db5 = 5
+toOctave Ds5_Eb5 = 5
+toOctave E5      = 5
+toOctave F5      = 5
+toOctave Fs5_Gb5 = 5
+toOctave G5      = 5
+toOctave Gs5_Ab5 = 5
+toOctave A5      = 5
+toOctave As5_Bb5 = 5
+toOctave B5      = 5
+toOctave C6      = 6
+toOctave Cs6_Db6 = 6
+toOctave Ds6_Eb6 = 6
+toOctave E6      = 6
+toOctave F6      = 6
+toOctave Fs6_Gb6 = 6
+toOctave G6      = 6
+toOctave Gs6_Ab6 = 6
+toOctave A6      = 6
+toOctave As6_Bb6 = 6
+toOctave B6      = 6
+toOctave C7      = 7
+toOctave Cs7_Db7 = 7
+toOctave Ds7_Eb7 = 7
+toOctave E7      = 7
+toOctave F7      = 7
+toOctave Fs7_Gb7 = 7
+toOctave G7      = 7
+toOctave Gs7_Ab7 = 7
+toOctave A7      = 7
+toOctave As7_Bb7 = 7
+toOctave B7      = 7
+toOctave C8      = 8
+
+
+
+
+
 data SigPitch = C
      	      | Cs_Db
               | D
