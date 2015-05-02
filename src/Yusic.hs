@@ -9,14 +9,18 @@ import Data.List
 yusic :: T.Text
 yusic = "Well Hello Dolly"
 
+
 data SigPitch = C
+     	      | Cs_Db
               | D
-              | Ds_Ab
+	      | Ds_Eb
               | E
               | F
+	      | Fs_Gb
               | G
+	      | Gs_Ab
               | A
-              | As_Bb
+	      | As_Bb
               | B
                 deriving (Show, Ord, Eq) -- You can now perform math ops on SigPitch (e.g. (As < B), (C /= D), (G == G), etc.)
                                          -- Which means you can  sort [E, G, C] = [C,E,G] (same as C:E:G:[]) inside toCanonicalSignature
@@ -178,7 +182,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_B_Cb9               -- End B/Cb
                 deriving (Show)
 
-toCanonicalSignature :: [SigPitch] -> Maybe CanonicalSignature                           -- Account for broken [SigPitch]
+toCanonicalSignature :: [SigPitch] -> Maybe KeyGuide                                        -- Account for broken [SigPitch]
 toCanonicalSignature [] = Nothing
 toCanonicalSignature sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor            -- sort/compare both deconstructor and positional parameter
                         | sp `sEQ` [C,Ds_Eb,G                 ] = Just KG_CMinor
@@ -341,7 +345,7 @@ toCanonicalSignature sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor
     sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
     sEQ a b = sort a == sort b
 
-fromCanonicalSignature :: CanonicalSignature -> [SigPitch]
+fromCanonicalSignature :: KeyGuide -> [SigPitch]
 fromCanonicalSignature KG_CMajor           = C:E:G                     :[] -- Begin C
 fromCanonicalSignature KG_CMinor           = C:Ds_Eb:G                 :[]
 fromCanonicalSignature KG_C5               = C:G                       :[]
