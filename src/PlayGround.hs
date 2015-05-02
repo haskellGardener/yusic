@@ -8,20 +8,119 @@ Super Midi Notes = [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
 
 data SigPitch = C
               | D
+	      | Ds_Eb
+              | E
+              | F
+              | G
+              | A
+	      | As_Bb
+              | B
+
+data SigPitch = Cs_Db
+     	      | Ds_Eb
+              | E
+              | F
+	      | Fs_Gb
+              | G
+	      | Gs_Ab
+              | B
+	      | C
+         
+data SigPitch = D
+     	      | E
+	      | F
+	      | Fs_Gb
+	      | G
+	      | A
+	      | B
+	      | C
+	      | Cs_Db
+	      
+data SigPitch = Ds_Eb
+     	      | F
+     	      | Fs_Gb
+     	      | G
+	      | Gs_Ab
+	      | As_Bb
+	      | C
+	      | Cs_Db
+	      | D
+	      
+data SigPitch = E
+              | Fs_Gb
+	      | G
+	      | Gs_Ab
+	      | A
+	      | B
+	      | Cs_Db
+	      | D
+	      | Ds_Eb
+	     
+
+
+data SigPitch = F_Es
+     	      | F
+	      | Gs_Ab
+	      | C
+	      | Ds_Eb
+	      | 
+	      | 
+     	     
+
+data SigPitch = Fs_Gb
+              | D
               | E
               | F
               | G
               | A
               | B
 
-data SigPitch - Cs_Db
-	      |
+data SigPitch = G
+              | D
+              | E
+              | F
+              | G
+              | A
+              | B
+
+data SigPitch = Gs_Ab
+              | D
+              | E
+              | F
+              | G
+              | A
+              | B
+
+data SigPitch = A
+              | D
+              | E
+              | F
+              | G
+              | A
+              | B
+
+data SigPitch = As_Bb
+              | D
+              | E
+              | F
+              | G
+              | A
+              | B
+
+data SigPitch = B_Cb
+              | D
+              | E
+              | F
+              | G
+              | A
+              | B
                 deriving (Show, Ord, Eq) -- You can now perform math ops on SigPitch (e.g. (As < B), (C /= D), (G == G), etc.)
                                          -- Which means you can  sort [E, G, C] = [C,E,G] (same as C:E:G:[]) inside toCanonicalSignature
                                          -- and order is correct.
 
 
-data CanonicalSignature = CMajor  --Begin C
+
+data KeyGuide = CMajor  --Begin C
                         | CMinor
                         | C5
                         | CDominant7
