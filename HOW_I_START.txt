@@ -1,0 +1,122 @@
+
+
+# Refer to this web page for additional information: https://howistart.org/posts/haskell/1
+
+         #######################################################################
+         #                                                                     #
+         # WARNING: This file should NOT be run as a shell script.             #
+         #                                                                     #
+         #          This guide contains shell commands and instructions        #
+         #          you may find useful for creating your new Haskell project. #
+         #                                                                     #
+         #######################################################################
+         
+echo "This guide is not intended to be a shell script!"
+echo "Please open this guide and read it."
+exit 1   # Placed here to prevent this guide from being blindly executed.
+
+# ALERT: There's plenty of manual file editing that should be performed 
+#        between some of the shell commands listed in this guide.
+#        Some of the shell commands may be usefully grouped together
+#        and run as a single unit.
+
+# "git config --global" commands are used to set -- git specific -- computer user
+#                       account global settings. They are convenience functions
+#                       typically run once (i.e. set and forget).
+#
+# git config --global user.name "Robert E. Lee"       # Run this once per computer account
+# git config --global user.email "robert@cyntrum.com" # Run this once per computer account
+
+
+
+
+########################################################################################
+#                                                                  Command Group 1 BEGIN
+
+export PROJECT=yusic
+export PROJDIR=~/Projects/$PROJECT
+
+mkdir -p $PROJDIR
+cd $PROJDIR
+cabal init
+
+#                                                                    Command Group 1 END
+########################################################################################
+#                                                                                      #
+#                                                                                      #
+#                                                                                      #
+#                       Manually Edit: $PROJDIR/$PROJECT.cabal                         #
+#                                                                                      #
+#                                                                                      #
+#                                                                                      #
+########################################################################################
+#                                                                  Command Group 2 BEGIN
+
+cat > .gitignore <<EOT
+dist
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+.virtualenv
+.hpc
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+cabal.config
+*.prof
+*.hp
+*.aux
+EOT
+
+git init
+git add .
+git commit -am "Initial commit"
+cabal sandbox init
+
+touch $PROJDIR/src/Main.hs
+touch $PROJDIR/src/${PROJECT}.hs
+
+mkdir $PROJDIR/tests
+touch $PROJDIR/tests/Tests.hs
+
+#                                                                    Command Group 2 END
+########################################################################################
+#                                                                                      #
+#                                                                                      #
+#                                                                                      #
+#           Manually Edit these files: $PROJDIR/$PROJECT.cabal                         #
+#                                      $PROJDIR/src/${PROJECT}.hs                      #
+#                                      $PROJDIR/src/Main.hs                            #
+#                                      $PROJDIR/tests/Tests.hs                         #
+#                                                                                      #
+#                                                                                      #
+#                                                                                      #
+########################################################################################
+#                                                                  Command Group 3 BEGIN
+
+cabal update
+cabal install --only-dependencies
+cabal build
+$PROJDIR/dist/build/$PROJECT/$PROJECT    # Run your project executable
+
+#                                                                    Command Group 3 END
+########################################################################################
+
+
+
+cabal repl           # Play with the project in the repl if you like
+
+
+
+########################################################################################
+#                                                                  Command Group 4 BEGIN
+
+cabal install hspec
+cabal install --enable-tests
+cabal test
+
+#                                                                    Command Group 4 END
+########################################################################################
+
