@@ -211,9 +211,9 @@ keyGuideAutomorphismP = allKeyGuides `sEQ` allKeyGuides'
     allKeyGuides' = catMaybes $ map toKeyGuide allKeyGuideSigPitches
 
 keyGuideReveal :: [] (KeyGuide, (Maybe KeyGuide))
-keyGuideReveal = zip allKeyGuides sigPitches
+keyGuideReveal = zip allKeyGuides maybeKeyGuides
   where
-    sigPitches = map toKeyGuide allKeyGuideSigPitches
+    maybeKeyGuides = map toKeyGuide allKeyGuideSigPitches
 
 
 -- End Test Functions
