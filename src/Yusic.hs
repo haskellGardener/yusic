@@ -9,30 +9,18 @@ import Data.List
 yusic :: T.Text
 yusic = "Well Hello Dolly"
 
-data Note =                                                                  A0 | As_Bb_0 | B0
-          | C1 | Cs_Db_1 | D1 | Ds_Eb_1 | E1 | F1 | Fs_Gb_1 | G1 | Gs_Ab_1 | A1 | As_Bb_1 | B1
-          | C2 | Cs_Db_2 | D2 | Ds_Eb_2 | E2 | F2 | Fs_Gb_2 | G2 | Gs_Ab_2 | A2 | As_Bb_2 | B2
-          | C3 | Cs_Db_3 | D3 | Ds_Eb_3 | E3 | F3 | Fs_Gb_3 | G3 | Gs_Ab_3 | A3 | As_Bb_3 | B3
-          | C4 | Cs_Db_4 | D4 | Ds_Eb_4 | E4 | F4 | Fs_Gb_4 | G4 | Gs_Ab_4 | A4 | As_Bb_4 | B4
-          | C5 | Cs_Db_5 | D5 | Ds_Eb_5 | E5 | F5 | Fs_Gb_5 | G5 | Gs_Ab_5 | A5 | As_Bb_5 | B5
-          | C6 | Cs_Db_6 | D6 | Ds_Eb_6 | E6 | F6 | Fs_Gb_6 | G6 | Gs_Ab_6 | A6 | As_Bb_6 | B6
-          | C7 | Cs_Db_7 | D7 | Ds_Eb_7 | E7 | F7 | Fs_Gb_7 | G7 | Gs_Ab_7 | A7 | As_Bb_7 | B7
-          | C8
-            deriving (Show, Eq, Ord, Enum)
+data SigPitch = C | Cs_Db   | D  | Ds_Eb   | E  | F  | Fs_Gb   | G  | Gs_Ab   | A  | As_Bb   | B  deriving (Show, Ord, Eq)
 
-data SigPitch = C
-     	      | Cs_Db
-              | D
-	      | Ds_Eb
-              | E
-              | F
-	      | Fs_Gb
-              | G
-	      | Gs_Ab
-              | A
-	      | As_Bb
-              | B
-                deriving (Show, Ord, Eq)
+data Note =                                                                     A0 | As_Bb_0 | B0
+             | C1 | Cs_Db_1 | D1 | Ds_Eb_1 | E1 | F1 | Fs_Gb_1 | G1 | Gs_Ab_1 | A1 | As_Bb_1 | B1
+             | C2 | Cs_Db_2 | D2 | Ds_Eb_2 | E2 | F2 | Fs_Gb_2 | G2 | Gs_Ab_2 | A2 | As_Bb_2 | B2
+             | C3 | Cs_Db_3 | D3 | Ds_Eb_3 | E3 | F3 | Fs_Gb_3 | G3 | Gs_Ab_3 | A3 | As_Bb_3 | B3
+             | C4 | Cs_Db_4 | D4 | Ds_Eb_4 | E4 | F4 | Fs_Gb_4 | G4 | Gs_Ab_4 | A4 | As_Bb_4 | B4
+             | C5 | Cs_Db_5 | D5 | Ds_Eb_5 | E5 | F5 | Fs_Gb_5 | G5 | Gs_Ab_5 | A5 | As_Bb_5 | B5
+             | C6 | Cs_Db_6 | D6 | Ds_Eb_6 | E6 | F6 | Fs_Gb_6 | G6 | Gs_Ab_6 | A6 | As_Bb_6 | B6
+             | C7 | Cs_Db_7 | D7 | Ds_Eb_7 | E7 | F7 | Fs_Gb_7 | G7 | Gs_Ab_7 | A7 | As_Bb_7 | B7
+             | C8
+               deriving (Show, Eq, Ord, Enum)
 
 data KeyGuide = KG_CMajor              -- Begin C
               | KG_CMinor
@@ -191,9 +179,9 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_B_Cb9               -- End B/Cb
                 deriving (Show)
 
-toKeyGuide :: [SigPitch] -> Maybe KeyGuide                                        -- Account for broken [SigPitch]
+toKeyGuide :: [SigPitch] -> Maybe KeyGuide
 toKeyGuide [] = Nothing
-toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor            -- sort/compare both deconstructor and positional parameter
+toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor     -- sort/compare both deconstructor and positional parameter
               | sp `sEQ` [C,Ds_Eb,G                 ] = Just KG_CMinor
               | sp `sEQ` [C,G                       ] = Just KG_C5
               | sp `sEQ` [C,E,G,As_Bb               ] = Just KG_CDominant7
@@ -206,7 +194,7 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [C,Ds_Eb,G,A               ] = Just KG_CMinor6
               | sp `sEQ` [C,E,G,As_Bb               ] = Just KG_C9
                                                         
-              | sp `sEQ` [Cs_Db,F,Gs_Ab             ] = Just KG_Cs_DbMajor        -- Begin Cs_DbMajor
+              | sp `sEQ` [Cs_Db,F,Gs_Ab             ] = Just KG_Cs_DbMajor -- Begin Cs_DbMajor
               | sp `sEQ` [Cs_Db,E,Gs_Ab             ] = Just KG_Cs_DbMinor
               | sp `sEQ` [Cs_Db,Gs_Ab               ] = Just KG_Cs_Db5
               | sp `sEQ` [Cs_Db,G,Gs_Ab,B           ] = Just KG_Cs_DbDominant7
@@ -217,9 +205,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [Cs_Db,Ds_Eb,Gs_Ab         ] = Just KG_Cs_DbSus2
               | sp `sEQ` [Cs_Db,F,Gs_Ab,As_Bb       ] = Just KG_Cs_Db6
               | sp `sEQ` [Cs_Db,E,Gs_Ab,As_Bb       ] = Just KG_Cs_DbMinor6
-              | sp `sEQ` [Cs_Db,Ds_Eb,F,Gs_Ab,B     ] = Just KG_Cs_Db9            -- end Cs_Db
+              | sp `sEQ` [Cs_Db,Ds_Eb,F,Gs_Ab,B     ] = Just KG_Cs_Db9     -- End Cs_Db
                                                         
-              | sp `sEQ` [D,Fs_Gb,A                 ] = Just KG_DMajor            -- Begin D
+              | sp `sEQ` [D,Fs_Gb,A                 ] = Just KG_DMajor     -- Begin D
               | sp `sEQ` [D,F,A                     ] = Just KG_DMinor
               | sp `sEQ` [D,A                       ] = Just KG_D5
               | sp `sEQ` [D,Fs_Gb,A,C               ] = Just KG_DDominant7
@@ -230,9 +218,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [D,E,A                     ] = Just KG_DSus2
               | sp `sEQ` [D,Fs_Gb,A,B               ] = Just KG_D6
               | sp `sEQ` [D,F,A,B                   ] = Just KG_DMinor6
-              | sp `sEQ` [D,E,Fs_Gb,A,C             ] = Just KG_D9                -- end DMajor
+              | sp `sEQ` [D,E,Fs_Gb,A,C             ] = Just KG_D9         -- End DMajor
                                                         
-              | sp `sEQ` [Ds_Eb,G,As_Bb             ] = Just KG_Ds_EbMajor        -- Begin Ds_Eb
+              | sp `sEQ` [Ds_Eb,G,As_Bb             ] = Just KG_Ds_EbMajor -- Begin Ds_Eb
               | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb         ] = Just KG_Ds_EbMinor
               | sp `sEQ` [Ds_Eb,As_Bb               ] = Just KG_Ds_Eb5
               | sp `sEQ` [Ds_Eb,G,As_Bb,Cs_Db       ] = Just KG_Ds_EbDominant7
@@ -243,9 +231,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [Ds_Eb,F,As_Bb             ] = Just KG_Ds_EbSus2
               | sp `sEQ` [Ds_Eb,G,As_Bb,C           ] = Just KG_Ds_Eb6
               | sp `sEQ` [Ds_Eb,Fs_Gb,As_Bb,C       ] = Just KG_Ds_EbMinor6
-              | sp `sEQ` [Ds_Eb,F,G,As_Bb,Cs_Db     ] = Just KG_Ds_Eb9            -- end Ds_Eb
+              | sp `sEQ` [Ds_Eb,F,G,As_Bb,Cs_Db     ] = Just KG_Ds_Eb9     -- End Ds_Eb
                                                         
-              | sp `sEQ` [E,Gs_Ab,B                 ] = Just KG_EMajor            -- Begin E
+              | sp `sEQ` [E,Gs_Ab,B                 ] = Just KG_EMajor     -- Begin E
               | sp `sEQ` [E,G,B                     ] = Just KG_EMinor
               | sp `sEQ` [E,B                       ] = Just KG_E5
               | sp `sEQ` [E,Gs_Ab,B,D               ] = Just KG_EDominant7
@@ -256,9 +244,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [E,Fs_Gb,B                 ] = Just KG_ESus2
               | sp `sEQ` [E,Gs_Ab,B,Cs_Db           ] = Just KG_E6
               | sp `sEQ` [E,G,B,Cs_Db               ] = Just KG_EMinor6
-              | sp `sEQ` [E,Fs_Gb,Gs_Ab,B,D         ] = Just KG_E9                -- end E
+              | sp `sEQ` [E,Fs_Gb,Gs_Ab,B,D         ] = Just KG_E9         -- End E
                                                         
-              | sp `sEQ` [F,A,C                     ] = Just KG_F_EsMajor         -- Begin F_Es
+              | sp `sEQ` [F,A,C                     ] = Just KG_F_EsMajor  -- Begin F_Es
               | sp `sEQ` [F,Gs_Ab,C                 ] = Just KG_F_EsMinor
               | sp `sEQ` [F,C                       ] = Just KG_F_Es5
               | sp `sEQ` [F,G,C,Ds_Eb               ] = Just KG_F_EsDominant7
@@ -269,9 +257,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [F,G,C                     ] = Just KG_F_EsSus2
               | sp `sEQ` [F,A,C,D                   ] = Just KG_F_Es6
               | sp `sEQ` [F,Gs_Ab,C,D               ] = Just KG_F_EsMinor6
-              | sp `sEQ` [F,G,A,C,Ds_Eb             ] = Just KG_F_Es9             -- end F_Es
+              | sp `sEQ` [F,G,A,C,Ds_Eb             ] = Just KG_F_Es9      -- End F_Es
                                                         
-              | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db         ] = Just KG_Fs_GbMajor        -- Begin Fs_Gb
+              | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db         ] = Just KG_Fs_GbMajor -- Begin Fs_Gb
               | sp `sEQ` [Fs_Gb,A,Cs_Db             ] = Just KG_Fs_GbMinor
               | sp `sEQ` [Fs_Gb,Cs_Db               ] = Just KG_Fs_Gb5
               | sp `sEQ` [Fs_Gb,Fs_Gb,As_Bb,E       ] = Just KG_Fs_GbDominant7
@@ -282,9 +270,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [Fs_Gb,Gs_Ab,Cs_Db         ] = Just KG_Fs_GbSus2
               | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db,Ds_Eb   ] = Just KG_Fs_Gb6
               | sp `sEQ` [Fs_Gb,A,Cs_Db,Ds_Eb       ] = Just KG_Fs_GbMinor6
-              | sp `sEQ` [Fs_Gb,Gs_Ab,As_Bb,E       ] = Just KG_Fs_Gb9            --end Fs_Gb
+              | sp `sEQ` [Fs_Gb,Gs_Ab,As_Bb,E       ] = Just KG_Fs_Gb9     --end Fs_Gb
                                                         
-              | sp `sEQ` [G,B,D                     ] = Just KG_GMajor            --Begin G
+              | sp `sEQ` [G,B,D                     ] = Just KG_GMajor     --Begin G
               | sp `sEQ` [G,As_Bb,D                 ] = Just KG_GMinor
               | sp `sEQ` [G,D                       ] = Just KG_G5
               | sp `sEQ` [G,B,D,F                   ] = Just KG_GDominant7
@@ -295,9 +283,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [G,A,D                     ] = Just KG_GSus2
               | sp `sEQ` [G,B,D,E                   ] = Just KG_G6
               | sp `sEQ` [G,As_Bb,D,E               ] = Just KG_Gs_AbMinor6
-              | sp `sEQ` [G,A,B,D,F                 ] = Just KG_Gs_Ab9            -- end G
+              | sp `sEQ` [G,A,B,D,F                 ] = Just KG_Gs_Ab9     -- End G
                                                         
-              | sp `sEQ` [Gs_Ab,C,Ds_Eb             ] = Just KG_Gs_AbMajor        -- Begin Gs_Ab
+              | sp `sEQ` [Gs_Ab,C,Ds_Eb             ] = Just KG_Gs_AbMajor -- Begin Gs_Ab
               | sp `sEQ` [Gs_Ab,B,Ds_Eb             ] = Just KG_Gs_AbMinor
               | sp `sEQ` [Gs_Ab,Ds_Eb               ] = Just KG_Gs_Ab5
               | sp `sEQ` [Gs_Ab,C,Ds_Eb,Cs_Db       ] = Just KG_Gs_AbDominant7
@@ -308,9 +296,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [Gs_Ab,As_Bb,Ds_Eb         ] = Just KG_Gs_AbSus2
               | sp `sEQ` [Gs_Ab,C,Ds_Eb,F           ] = Just KG_Gs_Ab6
               | sp `sEQ` [Gs_Ab,B,Ds_Eb,F           ] = Just KG_Gs_AbMinor6
-              | sp `sEQ` [Gs_Ab,As_Bb,C,Ds_Eb,Fs_Gb ] = Just KG_Gs_Ab9            --end Gs_Ab
+              | sp `sEQ` [Gs_Ab,As_Bb,C,Ds_Eb,Fs_Gb ] = Just KG_Gs_Ab9     --end Gs_Ab
                                                         
-              | sp `sEQ` [A,Cs_Db,E                 ] = Just KG_AMajor            --Begin A
+              | sp `sEQ` [A,Cs_Db,E                 ] = Just KG_AMajor     --Begin A
               | sp `sEQ` [A,C,E                     ] = Just KG_AMinor
               | sp `sEQ` [A,E                       ] = Just KG_A5
               | sp `sEQ` [A,Cs_Db,E,G               ] = Just KG_ADominant7
@@ -321,9 +309,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [A,B,E                     ] = Just KG_ASus2
               | sp `sEQ` [A,Cs_Db,Fs_Gb             ] = Just KG_A6
               | sp `sEQ` [A,C,E,Fs_Gb               ] = Just KG_AMinor6
-              | sp `sEQ` [A,B,Cs_Db,E,G             ] = Just KG_A9                -- end A
+              | sp `sEQ` [A,B,Cs_Db,E,G             ] = Just KG_A9         -- End A
                                                         
-              | sp `sEQ` [As_Bb,D,F                 ] = Just KG_As_BbMajor        -- Begin As_Bb
+              | sp `sEQ` [As_Bb,D,F                 ] = Just KG_As_BbMajor -- Begin As_Bb
               | sp `sEQ` [As_Bb,Cs_Db,F             ] = Just KG_As_BbMinor
               | sp `sEQ` [As_Bb,F                   ] = Just KG_As_Bb5
               | sp `sEQ` [As_Bb,D,F,Gs_Ab           ] = Just KG_As_BbDominant7
@@ -334,9 +322,9 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [As_Bb,C,F                 ] = Just KG_As_BbSus2
               | sp `sEQ` [As_Bb,D,F,G               ] = Just KG_As_Bb6
               | sp `sEQ` [As_Bb,Cs_Db,F,G           ] = Just KG_As_BbMinor6
-              | sp `sEQ` [As_Bb,C,D,F,Gs_Ab         ] = Just KG_As_Bb9            -- end As_Bb
+              | sp `sEQ` [As_Bb,C,D,F,Gs_Ab         ] = Just KG_As_Bb9     -- End As_Bb
                                                         
-              | sp `sEQ` [B,Ds_Eb,Fs_Gb             ] = Just KG_B_CbMajor         -- Begin B_Cb
+              | sp `sEQ` [B,Ds_Eb,Fs_Gb             ] = Just KG_B_CbMajor  -- Begin B_Cb
               | sp `sEQ` [B,D,Fs_Gb                 ] = Just KG_B_CbMinor
               | sp `sEQ` [B,Fs_Gb                   ] = Just KG_B_Cb5
               | sp `sEQ` [B,Ds_Eb,Fs_Gb,A           ] = Just KG_B_CbDominant7
@@ -347,13 +335,13 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor          
               | sp `sEQ` [B,Cs_Db,Fs_Gb             ] = Just KG_B_CbSus2
               | sp `sEQ` [B,Ds_Eb,Fs_Gb,Gs_Ab       ] = Just KG_B_Cb6
               | sp `sEQ` [B,D,Fs_Gb,Gs_Ab           ] = Just KG_B_CbMinor6
-              | sp `sEQ` [B,Cs_Db,Ds_Eb,Fs_Gb,A     ] = Just KG_B_Cb9             -- end B_Cb
-              | otherwise                             = Nothing                   -- Broken [SigPitch] deserves Nothing !!!
+              | sp `sEQ` [B,Cs_Db,Ds_Eb,Fs_Gb,A     ] = Just KG_B_Cb9      -- End B_Cb
+              | otherwise                             = Nothing            -- Broken [SigPitch] deserves Nothing !!!
   where
     sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
     sEQ a b = sort a == sort b
 
-fromKeyGuide :: KeyGuide -> [SigPitch]
+fromKeyGuide :: KeyGuide        -> [] SigPitch
 fromKeyGuide KG_CMajor           = C:E:G                     :[] -- Begin C
 fromKeyGuide KG_CMinor           = C:Ds_Eb:G                 :[]
 fromKeyGuide KG_C5               = C:G                       :[]
