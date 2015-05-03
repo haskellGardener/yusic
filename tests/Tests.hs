@@ -8,7 +8,7 @@ import Test.Hspec
 
 main :: IO ()
 main = hspec $ do
-  describe "Verify that yusic outputs the correct data" $ do
-    it "equals Dolly" $ do
-      theSum <- return yusic
-      theSum `shouldBe` "Well Hello Dolly!"
+  describe "Verify that the note functions can be composed to create an automorphism" $ do
+    it "Verify automorphism" $ do
+      allNoteValid <- return noteAutomorphismP
+      allNoteValid `shouldBe` True

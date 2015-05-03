@@ -5,6 +5,7 @@ where
 
 import qualified Data.Text as T
 import Data.List
+import Data.Maybe
 
 yusic :: T.Text
 yusic = "Well Hello Dolly"
@@ -177,6 +178,32 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_B_Cb9               -- End B/Cb
                 deriving (Show)
 
+
+-- Begin Test Functions
+
+allNotes :: [] Note
+allNotes = enumFrom A0
+
+allNotePitches :: [] SigPitch 
+allNotePitches = map toSigPitch allNotes
+
+allNoteOctaves :: [] Int
+allNoteOctaves = map toOctave allNotes
+
+allPitchOctavePairs :: [] (SigPitch, Int)
+allPitchOctavePairs = zip allNotePitches allNoteOctaves
+
+noteAutomorphismP :: Bool
+noteAutomorphismP = allNotes `sEQ` allNotes'
+  where
+    mF (s,p) = toNoteBySigOctave s p
+    allNotes' = catMaybes $ map mF allPitchOctavePairs
+
+-- End Test Functions
+
+sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
+sEQ a b = sort a == sort b
+
 toKeyGuide :: [SigPitch] -> Maybe KeyGuide
 toKeyGuide [] = Nothing
 toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor     -- sort/compare both deconstructor and positional parameter
@@ -335,9 +362,6 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor     -- so
               | sp `sEQ` [B,D,Fs_Gb,Gs_Ab           ] = Just KG_B_CbMinor6
               | sp `sEQ` [B,Cs_Db,Ds_Eb,Fs_Gb,A     ] = Just KG_B_Cb9      -- End B_Cb
               | otherwise                             = Nothing            -- Aberrant [SigPitch] deserves Nothing !!!
-  where
-    sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
-    sEQ a b = sort a == sort b
 
 fromKeyGuide :: KeyGuide        -> [] SigPitch
 fromKeyGuide KG_CMajor           = C:E:G                     :[] -- Begin C
