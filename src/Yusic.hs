@@ -176,7 +176,7 @@ data KeyGuide = KG_CMajor              -- Begin C
               | KG_B_Cb6
               | KG_B_CbMinor6
               | KG_B_Cb9               -- End B/Cb
-                deriving (Show)
+                deriving (Show, Eq, Ord, Enum)
 
 
 -- Begin Test Functions
@@ -198,6 +198,18 @@ noteAutomorphismP = allNotes `sEQ` allNotes'
   where
     mF (s,p) = toNoteBySigOctave s p
     allNotes' = catMaybes $ map mF allPitchOctavePairs
+
+allKeyGuides :: [] KeyGuide
+allKeyGuides = enumFrom KG_CMajor
+
+allKeyGuideSigPitches :: [] ([] SigPitch)
+allKeyGuideSigPitches = map fromKeyGuide allKeyGuides
+
+keyGuideAutomorphismP :: Bool
+keyGuideAutomorphismP = allKeyGuides `sEQ` allKeyGuides'
+  where
+    allKeyGuides' = catMaybes $ map toKeyGuide allKeyGuideSigPitches
+
 
 -- End Test Functions
 

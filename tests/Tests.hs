@@ -12,3 +12,8 @@ main = hspec $ do
     it "Verify automorphism" $ do
       allNoteValid <- return noteAutomorphismP
       allNoteValid `shouldBe` True
+
+  describe "Key guide automorphism" $ do
+    it "Verify Key guide automorphism" $ do
+      keyGuidesValid <- return keyGuideAutomorphismP
+      keyGuidesValid `shouldBe` True
