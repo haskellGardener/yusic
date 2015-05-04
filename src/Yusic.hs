@@ -219,6 +219,15 @@ keyGuideRevealNothings = filter (isNothing . snd) pairs
 keyGuideRevealDifferences :: [] KeyGuide
 keyGuideRevealDifferences = (sort . catMaybes $ map toKeyGuide allKeyGuideSigPitches) \\ (sort allKeyGuides)
 
+
+allToMidis :: [] Int
+allToMidis = map toMidi allNotes
+
+noteMidiAutomorphismP :: Bool
+noteMidiAutomorphismP = allNotes `sEQ` allNotes'
+  where
+    allNotes' = catMaybes $ map fromMidi allToMidis
+
 -- End Test Functions
 
 sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
