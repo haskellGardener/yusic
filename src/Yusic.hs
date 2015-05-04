@@ -210,11 +210,14 @@ keyGuideAutomorphismP = allKeyGuides `sEQ` allKeyGuides'
   where
     allKeyGuides' = catMaybes $ map toKeyGuide allKeyGuideSigPitches
 
-keyGuideReveal :: [] (KeyGuide, (Maybe KeyGuide))
-keyGuideReveal = zip allKeyGuides maybeKeyGuides
+keyGuideRevealNothings :: [] (KeyGuide, (Maybe KeyGuide))
+keyGuideRevealNothings = filter (isNothing . snd) pairs
   where
     maybeKeyGuides = map toKeyGuide allKeyGuideSigPitches
+    pairs = zip allKeyGuides maybeKeyGuides
 
+keyGuideRevealDifferences :: [] KeyGuide
+keyGuideRevealDifferences = (sort . catMaybes $ map toKeyGuide allKeyGuideSigPitches) \\ (sort allKeyGuides)
 
 -- End Test Functions
 
