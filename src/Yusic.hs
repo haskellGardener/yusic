@@ -219,6 +219,8 @@ keyGuideRevealNothings = filter (isNothing . snd) pairs
 keyGuideRevealDifferences :: [] KeyGuide
 keyGuideRevealDifferences = (sort . catMaybes $ map toKeyGuide allKeyGuideSigPitches) \\ (sort allKeyGuides)
 
+keyGuideBadPairs :: [] (KeyGuide, KeyGuide)
+keyGuideBadPairs = filter (\(kg, kg') -> kg /= kg') $ zip allKeyGuides (catMaybes $ map toKeyGuide allKeyGuideSigPitches)
 
 allToMidis :: [] Int
 allToMidis = map toMidi allNotes
@@ -316,7 +318,7 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor     -- so
               | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db         ] = Just KG_Fs_GbMajor -- Begin Fs_Gb
               | sp `sEQ` [Fs_Gb,A,Cs_Db             ] = Just KG_Fs_GbMinor
               | sp `sEQ` [Fs_Gb,Cs_Db               ] = Just KG_Fs_Gb5
-              | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db:E       ] = Just KG_Fs_GbDominant7
+              | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db,E       ] = Just KG_Fs_GbDominant7
               | sp `sEQ` [Fs_Gb,As_Bb,F             ] = Just KG_Fs_GbMajor7
               | sp `sEQ` [Fs_Gb,A,Cs_Db,E           ] = Just KG_Fs_GbMinor7
               | sp `sEQ` [Fs_Gb,A,Cs_Db,F           ] = Just KG_Fs_GbMinorMajor7
@@ -324,7 +326,7 @@ toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor     -- so
               | sp `sEQ` [Fs_Gb,Gs_Ab,Cs_Db         ] = Just KG_Fs_GbSus2
               | sp `sEQ` [Fs_Gb,As_Bb,Cs_Db,Ds_Eb   ] = Just KG_Fs_Gb6
               | sp `sEQ` [Fs_Gb,A,Cs_Db,Ds_Eb       ] = Just KG_Fs_GbMinor6
-              | sp `sEQ` [Fs_Gb,Gs_Ab,As_Bb,Cs_Db:E ] = Just KG_Fs_Gb9     --end Fs_Gb
+              | sp `sEQ` [Fs_Gb,Gs_Ab,As_Bb,Cs_Db,E ] = Just KG_Fs_Gb9     --end Fs_Gb
                                                         
               | sp `sEQ` [G,B,D                     ] = Just KG_GMajor     --Begin G
               | sp `sEQ` [G,As_Bb,D                 ] = Just KG_GMinor
