@@ -10,7 +10,26 @@ import Data.Maybe
 yusic :: T.Text
 yusic = "Well Hello Dolly"
 
-data SigPitch = C  | Cs_Db  | D  | Ds_Eb  | E  | F  | Fs_Gb  | G  | Gs_Ab  | A  | As_Bb  | B  deriving (Show, Ord, Eq)
+data SigPitch = C  | Cs_Db  | D  | Ds_Eb  | E  | F  | Fs_Gb  | G  | Gs_Ab  | A  | As_Bb  | B  deriving (Show, Ord, Eq)	
+
+-- SigPitch is a datatype which holds the above constructors representing each musical root.
+-- Deriving (Show,Ord,EQ) - derived instance is an instance declaration that is generated automatically in conjunction with a data or newtype declaration. Derived
+-- 	    		    constructors always traverse constructors from Left to Right, or here from C - B. 
+-- Show - used to coerce values into strings and parse strings into values.
+-- Ord  - (/=) - compare arguments lexicographically with respect to the constructor set given, with earlier constructors in the datatype declaration counting
+--       as smaller than later ones. In the case of SigPitch, C is small than B.
+-- Eq   - (==) - compare the equality of constructors.
+-- Enum - derived instances of Enum only work with data types with only nullary constructors (or a constructor that takes no arguments).
+--
+--  More on enum defitions: -      enumFrom x           = enumFromTo x lastCon
+--  enumFromThen x y     = enumFromThenTo x y bound
+--                       where
+--                         bound | fromEnum y >= fromEnum x = lastCon
+--                               | otherwise                = firstCon
+--  enumFromTo x y       = map toEnum [fromEnum x .. fromEnum y]
+--  enumFromThenTo x y z = map toEnum [fromEnum x, fromEnum y .. fromEnum z]
+--  More on Enum - Below Enum is utilized in Note. In this example [A7..] == [As_Bb7,B7,C8]
+
 data Note     =                                                              A0 | As_Bb0 | B0
               | C1 | Cs_Db1 | D1 | Ds_Eb1 | E1 | F1 | Fs_Gb1 | G1 | Gs_Ab1 | A1 | As_Bb1 | B1
               | C2 | Cs_Db2 | D2 | Ds_Eb2 | E2 | F2 | Fs_Gb2 | G2 | Gs_Ab2 | A2 | As_Bb2 | B2
@@ -20,6 +39,13 @@ data Note     =                                                              A0 
               | C6 | Cs_Db6 | D6 | Ds_Eb6 | E6 | F6 | Fs_Gb6 | G6 | Gs_Ab6 | A6 | As_Bb6 | B6
               | C7 | Cs_Db7 | D7 | Ds_Eb7 | E7 | F7 | Fs_Gb7 | G7 | Gs_Ab7 | A7 | As_Bb7 | B7
               | C8                                                                            deriving (Show, Eq, Ord, Enum)
+
+
+-- Above, Note is a datatype that holds the above constructors A0-C8 which represent every note in every octave of a piano.
+-- Again, Deriving is used to give comparability to the constructors in the list. 
+
+-- Below, KeyGuide is a dataype that holds the first 12 of the possible 51 chords structures possible for each root.
+-- They care denoted as KG_Name as to not interfere with other constructor names used as we disovered during testing. 
 
 data KeyGuide = KG_CMajor              -- Begin C
               | KG_CMinor
@@ -181,6 +207,7 @@ data KeyGuide = KG_CMajor              -- Begin C
 
 -- Begin Test Functions
 
+-- allNotes 
 allNotes :: [] Note
 allNotes = enumFrom A0
 
@@ -193,6 +220,7 @@ allNoteOctaves = map toOctave allNotes
 allPitchOctavePairs :: [] (SigPitch, Int)
 allPitchOctavePairs = zip allNotePitches allNoteOctaves
 
+--Endomorphism - An Endomorphism in a given Category is a morphism from some object to itself. 
 noteEndomorphismP :: Bool
 noteEndomorphismP = allNotes `sEQ` allNotes'
   where
@@ -232,9 +260,14 @@ noteMidiEndomorphismP = allNotes `sEQ` allNotes'
 
 -- End Test Functions
 
-sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
-sEQ a b = sort a == sort b
 
+
+
+
+-- Below is the second draft of our toKeyGuide, built originally  with sp to sort and compare both deconstructors and positional parameters.
+-- This quickly became an issue for our tests because, although we wanted order of notes not to matter, for flexibility we discovered through tests that, of course
+-- some differently named chords may sometimes share the same notes, but in different orders. 
+-- 
 -- toKeyGuide :: [SigPitch] -> Maybe KeyGuide
 -- toKeyGuide [] = Nothing
 -- toKeyGuide sp | sp `sEQ` [C,E,G                     ] = Just KG_CMajor     -- sort/compare both deconstructor and positional parameter
@@ -394,7 +427,16 @@ sEQ a b = sort a == sort b
 --               | sp `sEQ` [B,Cs_Db,Ds_Eb,Fs_Gb,A     ] = Just KG_B_Cb9      -- End B_Cb
 --               | otherwise                             = Nothing            -- Aberrant [SigPitch] deserves Nothing !!!
 
+sEQ :: (Eq a, Ord a) => [a] -> [a] -> Bool    -- Sort and compare two SigPitch lists
+sEQ a b = sort a == sort b
 
+-- toKeyGuide is a function that takes a SigPitch and returns a Maybe KeyGuide.toKeyGuide allows us to determine chords from a list of SigPitch's.
+-- Here it's necessary to discuss the Maybe type in Haskell.
+-- Maybe type definition  data Maybe a = Just a | Nothing
+--                                     deriving (Eq, Ord)
+-- Maybe allows a programmer to "specify something is not there". Without this, we would have constant compilation issues for bogus purposes. 
+-- Just allows us to return something that is just something. This means we can return something if a value is not present. Again, avoiding compilation issues.
+-- Notice the toKeyGuide_ = nothing at the bottom of the toKeyGuide.This simply means we get nothing if we don't find something. 
 
 toKeyGuide :: [SigPitch] -> Maybe KeyGuide
 toKeyGuide [] = Nothing
@@ -561,7 +603,7 @@ toKeyGuide _                             = Nothing            -- Aberrant [SigPi
 
 
 
-
+--Below,fromKeyGuide is a function that takes a KeyGuide and returns a list of SigPitchs. 
 
 
 fromKeyGuide :: KeyGuide        -> [] SigPitch
@@ -721,6 +763,9 @@ fromKeyGuide KG_B_Cb6            = B:Ds_Eb:Fs_Gb:Gs_Ab       :[]
 fromKeyGuide KG_B_CbMinor6       = B:D:Fs_Gb:Gs_Ab           :[]
 fromKeyGuide KG_B_Cb9            = B:Cs_Db:Ds_Eb:Fs_Gb:A     :[] -- End B_Cb
 
+
+--Below,toNotesbySigPich is a function that takes a SigPitch and returns a list of notes from all piano octave ranges. 
+
 toNotesBySigPitch :: SigPitch -> [] Note
 toNotesBySigPitch A     = A0     :A1     :A2     :A3     :A4     :A5     :A6     :A7         :[]
 toNotesBySigPitch As_Bb = As_Bb0 :As_Bb1 :As_Bb2 :As_Bb3 :As_Bb4 :As_Bb5 :As_Bb6 :As_Bb7     :[]
@@ -735,6 +780,8 @@ toNotesBySigPitch Fs_Gb =         Fs_Gb1 :Fs_Gb2 :Fs_Gb3 :Fs_Gb4 :Fs_Gb5 :Fs_Gb6
 toNotesBySigPitch G     =         G1     :G2     :G3     :G4     :G5     :G6     :G7         :[]
 toNotesBySigPitch Gs_Ab =         Gs_Ab1 :Gs_Ab2 :Gs_Ab3 :Gs_Ab4 :Gs_Ab5 :Gs_Ab6 :Gs_Ab7     :[]
 
+--fromOctave is a function that takes an Int (our midi values) and returns a list of notes from all piano octaves. 
+
 fromOctave :: Int -> [] Note
 fromOctave 0 =                                            A0:As_Bb0:B0 :[]
 fromOctave 1 = C1:Cs_Db1:D1:Ds_Eb1:E1:F1:Fs_Gb1:G1:Gs_Ab1:A1:As_Bb1:B1 :[]
@@ -747,6 +794,8 @@ fromOctave 7 = C7:Cs_Db7:D7:Ds_Eb7:E7:F7:Fs_Gb7:G7:Gs_Ab7:A7:As_Bb7:B7 :[]
 fromOctave 8 = C8                                                      :[]
 fromOctave _ = []
 
+--toNoteBySigOctave is a functiont aht takes a SigPitch and an Int and retursn a Maybe Note. 
+
 toNoteBySigOctave :: SigPitch -> Int -> Maybe Note
 toNoteBySigOctave sp n = if null intersection
                           then Nothing
@@ -755,6 +804,8 @@ toNoteBySigOctave sp n = if null intersection
     fo = fromOctave n
     tn = toNotesBySigPitch sp
     intersection = intersect fo tn
+
+--toOcatve is a function that takes a Note(each key on the piano) and returns an Int(representing an octave). 
 
 toOctave :: Note -> Int
 toOctave A0     = 0
@@ -846,6 +897,8 @@ toOctave As_Bb7 = 7
 toOctave B7     = 7
 toOctave C8     = 8
 
+--toSigPitch is a function that takes a Note and returns a SigPitch. This is our converter from Note to SigPitch. 
+
 toSigPitch :: Note -> SigPitch
 toSigPitch A0     = A 
 toSigPitch As_Bb0 = As_Bb 
@@ -936,6 +989,8 @@ toSigPitch As_Bb7 = As_Bb
 toSigPitch B7     = B 
 toSigPitch C8     = C 
 
+-- toMidi is a function that takes a Note and returns an Int (midi value). Now we can convert from a Note to an Int representing a midi value. 
+
 toMidi :: Note -> Int
 toMidi A0     = 21
 toMidi As_Bb0 = 22
@@ -1025,6 +1080,8 @@ toMidi A7     = 105
 toMidi As_Bb7 = 106
 toMidi B7     = 107
 toMidi C8     = 108
+
+--fromMidi is a function taht takes an Int and returns a Maybe Note. This is our converter from midi value to a specific note at a specific octave.
 
 fromMidi :: Int -> Maybe Note
 fromMidi 21  = Just A0
