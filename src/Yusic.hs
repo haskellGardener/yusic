@@ -3,21 +3,21 @@
 module Yusic
 where
 
-import qualified Data.Text as T
+import qualified Data.Text as T		--avoid compiler complaining about collissions with prelude functionality
 import Data.List
 import Data.Maybe
 
-yusic :: T.Text
-yusic = "Well Hello Dolly"
+yusic :: T.Text				--Yusic only return text - for basic functionality testing
+yusic = "Well Hello Dolly"		--Yusic return text "well hello dolly" - for basic functionality testing
 
 data SigPitch = C  | Cs_Db  | D  | Ds_Eb  | E  | F  | Fs_Gb  | G  | Gs_Ab  | A  | As_Bb  | B  deriving (Show, Ord, Eq)	
 
--- SigPitch is a datatype which holds the above constructors representing each musical root.
+-- SigPitch is a datatype\type constructor  which holds the above value constructors representing each musical root.
 -- Deriving (Show,Ord,EQ) - derived instance is an instance declaration that is generated automatically in conjunction with a data or newtype declaration. Derived
 -- 	    		    constructors always traverse constructors from Left to Right, or here from C - B. 
 -- Show - used to coerce values into strings and parse strings into values.
--- Ord  - (/=) - compare arguments lexicographically with respect to the constructor set given, with earlier constructors in the datatype declaration counting
---       as smaller than later ones. In the case of SigPitch, C is small than B.
+-- Ord  - (/=) - compare arguments lexicographically with respect to the constructor set given, with earlier value constructors in the datatype declaration counting
+--       as smaller than later ones. In the case of SigPitch, C is smaller than B.
 -- Eq   - (==) - compare the equality of constructors.
 -- Enum - derived instances of Enum only work with data types with only nullary constructors (or a constructor that takes no arguments).
 --
@@ -45,7 +45,7 @@ data Note     =                                                              A0 
 -- Again, Deriving is used to give comparability to the constructors in the list. 
 
 -- Below, KeyGuide is a dataype that holds the first 12 of the possible 51 chords structures possible for each root.
--- They care denoted as KG_Name as to not interfere with other constructor names used as we disovered during testing. 
+-- They are denoted as KG_foo as to avoid a name space collision with other constructor names used as we disovered during compilation.
 
 data KeyGuide = KG_CMajor              -- Begin C
               | KG_CMinor
@@ -220,13 +220,13 @@ allNoteOctaves = map toOctave allNotes
 allPitchOctavePairs :: [] (SigPitch, Int)
 allPitchOctavePairs = zip allNotePitches allNoteOctaves
 
---Endomorphism - An Endomorphism in a given Category is a morphism from some object to itself. 
+--Endomorphism - An Endomorphism in a given Category is a morphism from some object to itself.  
 noteEndomorphismP :: Bool
 noteEndomorphismP = allNotes `sEQ` allNotes'
   where
-    mF (s,p) = toNoteBySigOctave s p
-    allNotes' = catMaybes $ map mF allPitchOctavePairs
-
+    mF (s,o) = toNoteBySigOctave s o
+    allNotes' = catMaybes $ map mF allPitchOctavePairs	   --catMaybes is part of maybe, which provides you with all justs and no maybes. This is a convienence function.
+    	      		    	   			   -- allNotes' should be equal to allNotes
 allKeyGuides :: [] KeyGuide
 allKeyGuides = enumFrom KG_CMajor
 
@@ -451,7 +451,7 @@ toKeyGuide (C:F:G                     :[]) = Just KG_CSus4
 toKeyGuide (C:D:G                     :[]) = Just KG_CSus2
 toKeyGuide (C:E:G:A                   :[]) = Just KG_C6
 toKeyGuide (C:Ds_Eb:G:A               :[]) = Just KG_CMinor6
-toKeyGuide (C:E:G:As_Bb               :[]) = Just KG_C9
+toKeyGuide (C:D:E:G:As_Bb             :[]) = Just KG_C9
                                                         
 toKeyGuide (Cs_Db:F:Gs_Ab             :[]) = Just KG_Cs_DbMajor -- Begin Cs_DbMajor
 toKeyGuide (Cs_Db:E:Gs_Ab             :[]) = Just KG_Cs_DbMinor
