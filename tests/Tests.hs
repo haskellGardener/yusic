@@ -8,17 +8,17 @@ import Test.Hspec
 
 main :: IO ()
 main = hspec $ do
-  describe "Verify that the note functions can be composed to create an automorphism" $ do
-    it "Verify automorphism" $ do
-      allNoteValid <- return noteAutomorphismP
+  describe "Verify that the note functions can be composed to create an endomorphism" $ do
+    it "Verify endomorphism" $ do
+      allNoteValid <- return noteEndomorphismP
       allNoteValid `shouldBe` True
 
-  describe "Key guide automorphism" $ do
-    it "Verify Key guide automorphism" $ do
-      keyGuidesValid <- return keyGuideAutomorphismP
+  describe "Key guide endomorphism" $ do
+    it "Verify Key guide endomorphism" $ do
+      keyGuidesValid <- return keyGuideEndomorphismP
       keyGuidesValid `shouldBe` True
 
-  describe "Note Midi automorphism" $ do
-    it "Verify Note Midi automorphism" $ do
-      allNoteMidiValid <- return noteMidiAutomorphismP
+  describe "Note Midi endomorphism" $ do
+    it "Verify Note Midi endomorphism" $ do
+      allNoteMidiValid <- return noteMidiEndomorphismP
       allNoteMidiValid `shouldBe` True
