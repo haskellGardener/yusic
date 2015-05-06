@@ -1210,13 +1210,15 @@ keyup k =  (480,NoteOn {channel = 0, key = k, velocity = 0})
 piggynote :: Note -> Track Ticks
 piggynote k = [ keydown k, keyup k]
  
-
+--For Terminal input with integer values
 magicMidi :: FilePath -> Melody -> IO()
 magicMidi f notes = exportFile  f $ midiEmpty  $ concat $ map  piggynote notes
 
+--For Terminal input with Ynotes
 yusicMidi :: FilePath -> YMelody -> IO()
 yusicMidi fileName melody = magicMidi fileName $ map toMidi melody
 
+--Hardcoded NBC Chimes 
 sampleMelody :: YMelody
 sampleMelody = [G4, E5, C5]
 
