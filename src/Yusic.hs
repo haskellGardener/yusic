@@ -1172,7 +1172,7 @@ fromMidi 107 = Just B7
 fromMidi 108 = Just C8
 fromMidi _   = Nothing
 
-
+type YMelody = [] YNote
 
 type Note = Int
 type Melody = [Note]
@@ -1213,3 +1213,12 @@ piggynote k = [ keydown k, keyup k]
 
 magicMidi :: FilePath -> Melody -> IO()
 magicMidi f notes = exportFile  f $ midiEmpty  $ concat $ map  piggynote notes
+
+yusicMidi :: FilePath -> YMelody -> IO()
+yusicMidi fileName melody = magicMidi fileName $ map toMidi melody
+
+sampleMelody :: YMelody
+sampleMelody = [C3, B2, F1]
+
+
+-- to test: yusicMidi "foo.mid" sampleMelody
