@@ -1182,8 +1182,8 @@ type Melody = [Note]
 type MidiEvent = (Ticks, Message)
 
 
-midiSkeleton :: Track Ticks -> Midi
-midiSkeleton mel =  Midi {
+midiEmpty :: Track Ticks -> Midi
+midiEmpty  crush  =  Midi {
          fileType = MultiTrack, 
          timeDiv = TicksPerBeat 480, 
          tracks = [
@@ -1195,7 +1195,7 @@ midiSkeleton mel =  Midi {
            (0,KeySignature 0 0)
           ]
           ++
-          mel
+          crush
           ++
           [
            (0,TrackEnd)
@@ -1210,9 +1210,9 @@ keydown k =  (0,NoteOn {channel = 0, key = k, velocity = 80})
 keyup :: Note -> MidiEvent
 keyup k =  (480,NoteOn {channel = 0, key = k, velocity = 0})
 
-playnote :: Note -> Track Ticks
-playnote k = [ keydown k, keyup k]
+piggynote :: Note -> Track Ticks
+piggynote k = [ keydown k, keyup k]
  
 
-createMidi :: FilePath -> Melody -> IO()
-createMidi f notes = exportFile  f $ midiSkeleton $ concat $ map  playnote notes
+magicMidi :: FilePath -> Melody -> IO()
+magicMidi f notes = exportFile  f $ midiEmpty  $ concat $ map  piggynote notes
