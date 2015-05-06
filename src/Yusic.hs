@@ -1218,7 +1218,7 @@ yusicMidi :: FilePath -> YMelody -> IO()
 yusicMidi fileName melody = magicMidi fileName $ map toMidi melody
 
 sampleMelody :: YMelody
-sampleMelody = [C3, B2, F1]
+sampleMelody = [G4, E5, C5]
 
 
 -- to test: yusicMidi "foo.mid" sampleMelody
