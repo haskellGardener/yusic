@@ -6,6 +6,7 @@ where
 import qualified Data.Text as T		--avoid compiler complaining about collissions with prelude functionality
 import Data.List
 import Data.Maybe
+import Codec.Midi
 
 yusic :: T.Text				--Yusic only return text - for basic functionality testing
 yusic = "Well Hello Dolly"		--Yusic return text "well hello dolly" - for basic functionality testing
@@ -30,7 +31,7 @@ data SigPitch = C  | Cs_Db  | D  | Ds_Eb  | E  | F  | Fs_Gb  | G  | Gs_Ab  | A  
 --  enumFromThenTo x y z = map toEnum [fromEnum x, fromEnum y .. fromEnum z]
 --  More on Enum - Below Enum is utilized in Note. In this example [A7..] == [As_Bb7,B7,C8]
 
-data Note     =                                                              A0 | As_Bb0 | B0
+data YNote     =                                                              A0 | As_Bb0 | B0
               | C1 | Cs_Db1 | D1 | Ds_Eb1 | E1 | F1 | Fs_Gb1 | G1 | Gs_Ab1 | A1 | As_Bb1 | B1
               | C2 | Cs_Db2 | D2 | Ds_Eb2 | E2 | F2 | Fs_Gb2 | G2 | Gs_Ab2 | A2 | As_Bb2 | B2
               | C3 | Cs_Db3 | D3 | Ds_Eb3 | E3 | F3 | Fs_Gb3 | G3 | Gs_Ab3 | A3 | As_Bb3 | B3
@@ -208,7 +209,7 @@ data KeyGuide = KG_CMajor              -- Begin C
 -- Begin Test Functions
 
 -- allNotes 
-allNotes :: [] Note
+allNotes :: [] YNote
 allNotes = enumFrom A0
 
 allNotePitches :: [] SigPitch 
@@ -766,7 +767,7 @@ fromKeyGuide KG_B_Cb9            = B:Cs_Db:Ds_Eb:Fs_Gb:A     :[] -- End B_Cb
 
 --Below,toNotesbySigPich is a function that takes a SigPitch and returns a list of notes from all piano octave ranges. 
 
-toNotesBySigPitch :: SigPitch -> [] Note
+toNotesBySigPitch :: SigPitch -> [] YNote
 toNotesBySigPitch A     = A0     :A1     :A2     :A3     :A4     :A5     :A6     :A7         :[]
 toNotesBySigPitch As_Bb = As_Bb0 :As_Bb1 :As_Bb2 :As_Bb3 :As_Bb4 :As_Bb5 :As_Bb6 :As_Bb7     :[]
 toNotesBySigPitch B     = B0     :B1     :B2     :B3     :B4     :B5     :B6     :B7         :[]
@@ -782,7 +783,7 @@ toNotesBySigPitch Gs_Ab =         Gs_Ab1 :Gs_Ab2 :Gs_Ab3 :Gs_Ab4 :Gs_Ab5 :Gs_Ab6
 
 --fromOctave is a function that takes an Int (our midi values) and returns a list of notes from all piano octaves. 
 
-fromOctave :: Int -> [] Note
+fromOctave :: Int -> [] YNote
 fromOctave 0 =                                            A0:As_Bb0:B0 :[]
 fromOctave 1 = C1:Cs_Db1:D1:Ds_Eb1:E1:F1:Fs_Gb1:G1:Gs_Ab1:A1:As_Bb1:B1 :[]
 fromOctave 2 = C2:Cs_Db2:D2:Ds_Eb2:E2:F2:Fs_Gb2:G2:Gs_Ab2:A2:As_Bb2:B2 :[]
@@ -796,7 +797,7 @@ fromOctave _ = []
 
 --toNoteBySigOctave is a functiont aht takes a SigPitch and an Int and retursn a Maybe Note. 
 
-toNoteBySigOctave :: SigPitch -> Int -> Maybe Note
+toNoteBySigOctave :: SigPitch -> Int -> Maybe YNote
 toNoteBySigOctave sp n = if null intersection
                           then Nothing
                           else Just (head intersection)
@@ -807,7 +808,7 @@ toNoteBySigOctave sp n = if null intersection
 
 --toOcatve is a function that takes a Note(each key on the piano) and returns an Int(representing an octave). 
 
-toOctave :: Note -> Int
+toOctave :: YNote -> Int
 toOctave A0     = 0
 toOctave As_Bb0 = 0
 toOctave B0     = 0
@@ -897,9 +898,9 @@ toOctave As_Bb7 = 7
 toOctave B7     = 7
 toOctave C8     = 8
 
---toSigPitch is a function that takes a Note and returns a SigPitch. This is our converter from Note to SigPitch. 
+--toSigPitch is a function that takes a Note1 and returns a SigPitch. This is our converter from Note1 to SigPitch. 
 
-toSigPitch :: Note -> SigPitch
+toSigPitch :: YNote -> SigPitch
 toSigPitch A0     = A 
 toSigPitch As_Bb0 = As_Bb 
 toSigPitch B0     = B 
@@ -989,9 +990,9 @@ toSigPitch As_Bb7 = As_Bb
 toSigPitch B7     = B 
 toSigPitch C8     = C 
 
--- toMidi is a function that takes a Note and returns an Int (midi value). Now we can convert from a Note to an Int representing a midi value. 
+-- toMidi is a function that takes a Note1 and returns an Int (midi value). Now we can convert from a Note1 to an Int representing a midi value. 
 
-toMidi :: Note -> Int
+toMidi :: YNote -> Int
 toMidi A0     = 21
 toMidi As_Bb0 = 22
 toMidi B0     = 23
@@ -1081,9 +1082,9 @@ toMidi As_Bb7 = 106
 toMidi B7     = 107
 toMidi C8     = 108
 
---fromMidi is a function taht takes an Int and returns a Maybe Note. This is our converter from midi value to a specific note at a specific octave.
+--fromMidi is a function taht takes an Int and returns a Maybe Note1. This is our converter from midi value to a specific note at a specific octave.
 
-fromMidi :: Int -> Maybe Note
+fromMidi :: Int -> Maybe YNote
 fromMidi 21  = Just A0
 fromMidi 22  = Just As_Bb0
 fromMidi 23  = Just B0
@@ -1174,3 +1175,44 @@ fromMidi 107 = Just B7
 fromMidi 108 = Just C8
 fromMidi _   = Nothing
 
+
+
+type Note = Int
+type Melody = [Note]
+type MidiEvent = (Ticks, Message)
+
+
+midiSkeleton :: Track Ticks -> Midi
+midiSkeleton mel =  Midi {
+         fileType = MultiTrack, 
+         timeDiv = TicksPerBeat 480, 
+         tracks = [
+          [
+           (0,ChannelPrefix 0),
+           (0,TrackName " Grand Piano  "),
+           (0,InstrumentName "GM Device  1"),
+           (0,TimeSignature 4 2 24 8),
+           (0,KeySignature 0 0)
+          ]
+          ++
+          mel
+          ++
+          [
+           (0,TrackEnd)
+          ]
+         ]
+       }  
+
+
+keydown :: Note -> MidiEvent
+keydown k =  (0,NoteOn {channel = 0, key = k, velocity = 80})
+
+keyup :: Note -> MidiEvent
+keyup k =  (480,NoteOn {channel = 0, key = k, velocity = 0})
+
+playnote :: Note -> Track Ticks
+playnote k = [ keydown k, keyup k]
+ 
+
+createMidi :: FilePath -> Melody -> IO()
+createMidi f notes = exportFile  f $ midiSkeleton $ concat $ map  playnote notes

@@ -24,6 +24,7 @@ executable yusic
   build-depends:       base >=4.7 && <5
                      , text
                      , yusic
+                     , HCodecs
   hs-source-dirs:      src
   default-language:    Haskell2010
 
@@ -34,6 +35,7 @@ library
   exposed-modules:     Yusic
   build-depends:       base >= 4.7 && <5
                      , text
+                     , HCodecs
   hs-source-dirs:      src
   default-language:    Haskell2010
 
@@ -50,4 +52,5 @@ test-suite tests
                      , yusic
                      , text
                      , hspec >= 2.0 && < 2.1
+                     , HCodecs
   default-language:    Haskell2010
